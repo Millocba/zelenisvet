@@ -132,26 +132,56 @@ a { color: var(--green-700); }
 }
 .btn:hover { background: var(--green-900); transform: translateY(-2px); color: #fff; }
 
-/* ---------- Services grid ---------- */
+/* ---------- Services (centered glass cards) ---------- */
+#servicios {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: linear-gradient(165deg, #f1f8e9 0%, #e8f5e9 45%, #d6ebd8 100%);
+}
+#servicios::before,
+#servicios::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+}
+#servicios::before {
+  width: 460px;
+  height: 460px;
+  top: -140px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(102, 187, 106, .5) 0%, transparent 70%);
+}
+#servicios::after {
+  width: 380px;
+  height: 380px;
+  bottom: -120px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(46, 125, 50, .4) 0%, transparent 70%);
+}
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 280px));
   gap: 1.4rem;
+  justify-content: center;
 }
 .service-card {
-  background: var(--white);
-  border: 1px solid var(--green-border);
+  background: rgba(255, 255, 255, .45);
+  border: 1px solid rgba(255, 255, 255, .65);
   border-radius: var(--radius);
   padding: 1.6rem;
-  box-shadow: var(--shadow);
-  transition: transform .25s ease, box-shadow .25s ease;
+  box-shadow: 0 8px 28px rgba(27, 94, 32, .18);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
   display: flex;
   flex-direction: column;
 }
-.service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.service-card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(27, 94, 32, .26); background: rgba(255, 255, 255, .58); }
 .service-card .icon {
   width: 48px; height: 48px;
-  background: var(--green-100);
+  background: rgba(46, 125, 50, .14);
   border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 1rem;

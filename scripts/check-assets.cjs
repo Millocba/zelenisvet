@@ -36,9 +36,13 @@ for (const file of files) {
   // url() de CSS se resuelve relativa al archivo CSS; src/href de HTML y
   // fetch() de JS se resuelven relativos al documento (index/404 en la raíz).
   const baseDir = ext === 'css' ? path.dirname(abs) : root;
+  // en HTML ignoramos bloques inline <script>/<style> (no son referencias del doc)
+  const scan = (ext === 'html')
+    ? source.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1\s*>/gi, '')
+    : source;
   const re = patterns[ext] || /(?:src|href)\s*=\s*"([^"]+)"/gi;
   let match;
-  while ((match = re.exec(source)) !== null) {
+  while ((match = re.exec(scan)) !== null) {
     let ref = match[1].split('?')[0].split('#')[0].trim();
     if (!ref || isExternal(ref)) continue;
     const target = ref.startsWith('/') ? path.join(root, ref.slice(1)) : path.join(baseDir, ref);

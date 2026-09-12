@@ -1,6 +1,14 @@
 <?php
 declare(strict_types=1);
 
+session_set_cookie_params([
+    'lifetime' => 0,
+    'path' => '/',
+    'httponly' => true,
+    'samesite' => 'Lax',
+    'secure' => !empty($_SERVER['HTTPS']),
+]);
+
 session_start();
 
 header('Content-Type: application/json; charset=utf-8');
@@ -55,6 +63,7 @@ if ($now >= $rlData['reset']) {
 if ($rlData['count'] >= MAX_RATE) {
     flock($rlFh, LOCK_UN);
     fclose($rlFh);
+    header('Retry-After: ' . RATE_WINDOW);
     fail(429, 'Demasiados intentos. Intente más tarde.');
 }
 $rlData['count']++;
@@ -97,7 +106,7 @@ if (mb_strlen($name) < 2 || mb_strlen($name) > 60) {
 if (mb_strlen($email) > 120 || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $invalid[] = 'email';
 }
-if (mb_strlen($phone) > 20 || !preg_match('/^[0-9+\-\s().]{6,20}$/', $phone)) {
+if (mb_strlen($phone) > 20 || !preg_match('/^(?=.*\d)[0-9+\-\s().]{6,20}$/', $phone)) {
     $invalid[] = 'telefono';
 }
 if (mb_strlen($text) < 10 || mb_strlen($text) > 2000) {
@@ -119,6 +128,7 @@ $body = "Nombre: {$name}\n"
 $headers = "From: Web ZELENI SVET <no-reply@zelenisvet.com.ar>\r\n"
          . "Reply-To: {$email}\r\n"
          . "Content-Type: text/plain; charset=UTF-8\r\n"
+         . "Content-Transfer-Encoding: 8bit\r\n"
          . "MIME-Version: 1.0\r\n"
          . "X-Mailer: PHP/" . phpversion();
 
@@ -127,16 +137,6 @@ $encodedSubject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
 $sent = @mail(DESTINATION, $encodedSubject, $body, $headers, '-f no-reply@zelenisvet.com.ar');
 
 if ($sent) {
-    $rlFh = fopen($rlFile, 'c+');
-    if ($rlFh !== false) {
-        flock($rlFh, LOCK_EX);
-        rewind($rlFh);
-        ftruncate($rlFh, 0);
-        fwrite($rlFh, json_encode(['count' => 0, 'reset' => $now + RATE_WINDOW]));
-        fflush($rlFh);
-        flock($rlFh, LOCK_UN);
-        fclose($rlFh);
-    }
     ok('Mensaje enviado correctamente.');
 }
 

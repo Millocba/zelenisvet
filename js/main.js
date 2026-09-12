@@ -19,6 +19,14 @@ document.documentElement.classList.add('js');
         menuToggle.setAttribute('aria-expanded', 'false');
       }
     });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mainNav.classList.contains('active')) {
+        mainNav.classList.remove('active');
+        menuToggle.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.focus();
+      }
+    });
   }
 
   var header = document.getElementById('site-header');
@@ -36,7 +44,7 @@ document.documentElement.classList.add('js');
     window.addEventListener('scroll', toggleTop, { passive: true });
     toggleTop();
     backToTop.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
     });
   }
 
@@ -64,8 +72,14 @@ document.documentElement.classList.add('js');
 
   if (!form) return;
 
+  var lastToken = '';
+
   function setResponse(msg, isError) {
     if (!responseBox) return;
+    if (msg === '' && !isError) {
+      responseBox.className = 'form-response';
+      return;
+    }
     responseBox.textContent = msg;
     responseBox.className = 'form-response ' + (isError ? 'form-response--error' : 'form-response--ok');
   }
@@ -77,6 +91,7 @@ document.documentElement.classList.add('js');
         return res.json();
       })
       .then(function (data) {
+        lastToken = data.csrf_token;
         form.elements['csrf'].value = data.csrf_token;
         if (submitBtn) submitBtn.disabled = false;
       })
@@ -91,6 +106,7 @@ document.documentElement.classList.add('js');
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     setResponse('', false);
+    if (submitBtn) submitBtn.disabled = true;
 
     fetch('enviar.php', {
       method: 'POST',
@@ -105,9 +121,13 @@ document.documentElement.classList.add('js');
       .then(function (msg) {
         setResponse(msg, false);
         form.reset();
+        form.elements['csrf'].value = lastToken;
       })
       .catch(function (err) {
         setResponse(err.message || 'Hubo un error al enviar el mensaje. Escribinos directamente a informacion@zelenisvet.com.ar', true);
+      })
+      .finally(function () {
+        if (submitBtn) submitBtn.disabled = false;
       });
   });
 })();

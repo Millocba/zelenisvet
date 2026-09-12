@@ -49,6 +49,7 @@ a { color: var(--green-700); }
 }
 
 .container { width: min(var(--container), 92%); margin-inline: auto; }
+.container--center { text-align: center; }
 
 .section { padding: 4.5rem 0; }
 .section--tint { background: var(--green-100); }

@@ -112,7 +112,7 @@ a { color: var(--green-700); }
 .hero h1 { color: #fff; }
 .hero p { font-size: 1.2rem; max-width: 560px; color: rgba(255, 255, 255, .92); }
 .hero .hero-tag { letter-spacing: .14em; text-transform: uppercase; font-size: .8rem; color: var(--green-300); font-weight: 700; margin-bottom: .75rem; }
-.cta-text { text-align: center; margin-top: 2.4rem; }
+.section--tint .cta-text, .cta-text { text-align: center; margin-top: 2.4rem; }
 .cta-text strong { color: var(--green-900); }
 
 /* ---------- Buttons ---------- */

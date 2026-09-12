@@ -35,21 +35,35 @@ if ($method !== 'POST') {
     fail(405, 'Método no permitido.');
 }
 
-// --- Rate limit: per IP, stored in session ---
+// --- Rate limit: per IP, file-backed (session-independent) ---
 $ip = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
-$rlKey = 'rl_' . hash('sha256', $ip);
+$rlFile = sys_get_temp_dir() . '/zelenisvet_rl_' . hash('sha256', $ip) . '.txt';
 $now = time();
 
-if (!isset($_SESSION[$rlKey]) || !is_array($_SESSION[$rlKey])) {
-    $_SESSION[$rlKey] = ['count' => 0, 'reset' => $now + RATE_WINDOW];
+$rlFh = fopen($rlFile, 'c+');
+if ($rlFh === false) {
+    fail(500, 'Hubo un error al enviar el mensaje. Intente nuevamente.');
 }
-if ($now >= $_SESSION[$rlKey]['reset']) {
-    $_SESSION[$rlKey] = ['count' => 0, 'reset' => $now + RATE_WINDOW];
+flock($rlFh, LOCK_EX);
+$rlData = (array)json_decode((string)stream_get_contents($rlFh), true);
+if (!isset($rlData['count'], $rlData['reset']) || !is_int($rlData['count']) || !is_int($rlData['reset'])) {
+    $rlData = ['count' => 0, 'reset' => $now + RATE_WINDOW];
 }
-if ($_SESSION[$rlKey]['count'] >= MAX_RATE) {
+if ($now >= $rlData['reset']) {
+    $rlData = ['count' => 0, 'reset' => $now + RATE_WINDOW];
+}
+if ($rlData['count'] >= MAX_RATE) {
+    flock($rlFh, LOCK_UN);
+    fclose($rlFh);
     fail(429, 'Demasiados intentos. Intente más tarde.');
 }
-++$_SESSION[$rlKey]['count'];
+$rlData['count']++;
+rewind($rlFh);
+ftruncate($rlFh, 0);
+fwrite($rlFh, json_encode($rlData));
+fflush($rlFh);
+flock($rlFh, LOCK_UN);
+fclose($rlFh);
 
 // --- Honeypot: bots fill the hidden "website" field ---
 if (!empty($_POST['website'])) {
@@ -110,10 +124,19 @@ $headers = "From: Web ZELENI SVET <no-reply@zelenisvet.com.ar>\r\n"
 
 $encodedSubject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
 
-$sent = @mail(DESTINATION, $encodedSubject, $body, $headers);
+$sent = @mail(DESTINATION, $encodedSubject, $body, $headers, '-f no-reply@zelenisvet.com.ar');
 
 if ($sent) {
-    $_SESSION[$rlKey]['count'] = 0;
+    $rlFh = fopen($rlFile, 'c+');
+    if ($rlFh !== false) {
+        flock($rlFh, LOCK_EX);
+        rewind($rlFh);
+        ftruncate($rlFh, 0);
+        fwrite($rlFh, json_encode(['count' => 0, 'reset' => $now + RATE_WINDOW]));
+        fflush($rlFh);
+        flock($rlFh, LOCK_UN);
+        fclose($rlFh);
+    }
     ok('Mensaje enviado correctamente.');
 }
 

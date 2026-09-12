@@ -304,4 +304,4 @@ a { color: var(--green-700); }
   .reveal, .js .reveal { opacity: 1; transform: none; transition: none; }
   .service-card, .project-item, .project-item img, .menu-toggle span, .fab, .btn { transition: none; }
 }
-.hero { background-image: url('../assets/img/banner2.jpeg'); }
+.hero { background-image: url('../assets/img/hero.jpeg'); }

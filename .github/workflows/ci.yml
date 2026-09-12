@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validación del sitio
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Referencias locales íntegras (HTML/CSS/JS/fuentes/imágenes)
+        run: node scripts/check-assets.cjs
+
+      - name: Guarda CSP (sin style/script/handlers inline)
+        run: node scripts/check-csp.cjs
+
+      - name: Sintaxis PHP del formulario
+        run: php -l enviar.php

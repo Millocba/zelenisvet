@@ -881,7 +881,7 @@
     <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"></path><path d="m5 12 7-7 7 7"></path></svg>
   </button>
 </sc-if>
-  <a href="https://wa.me/5493513001702" aria-label="WhatsApp" title="Chateá por WhatsApp" style="position:fixed;right:20px;bottom:20px;z-index:70;width:58px;height:58px;border-radius:50%;background:#25D366;box-shadow:0 12px 28px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease" style-hover="transform:translateY(-4px);box-shadow:0 20px 36px rgba(0,0,0,.5)">
+  <a href="https://wa.me/5493513001702" aria-label="WhatsApp" title="Chateá por WhatsApp" style="position:fixed;right:20px;bottom:20px;z-index:70;width:58px;height:58px;border-radius:50%;background:#25D366;box-shadow:0 12px 28px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease;animation:zs-pulse 3s ease-out infinite" style-hover="transform:translateY(-4px);box-shadow:0 20px 36px rgba(0,0,0,.5)">
     <svg viewBox="0 0 32 32" width="32" height="32" fill="#ffffff" aria-hidden="true">
       <path d="M16.004 3c-7.183 0-13.004 5.82-13.004 13.004 0 2.344.617 4.634 1.794 6.636L3.02 29.38l6.876-1.614a12.94 12.94 0 0 0 6.108 1.455h.004C23.188 29.22 29.008 23.4 29.008 16.216S23.188 3 16.004 3zm0 2.318c5.883 0 10.686 4.803 10.686 10.686S21.887 26.69 16.004 26.69c-2.276 0-4.46-.615-6.37-1.773l-.456-.27-4.08.957 1.058-3.98-.297-.452a10.62 10.62 0 0 1-1.61-5.658c0-5.883 4.803-10.686 10.686-10.686zm-5.349 7.404c-.197 0-.516.082-.787.415-.271.332-1.034 1.01-1.034 2.463 0 1.452 1.056 2.854 1.204 3.052.147.197 2.08 3.176 5.04 4.444 2.52 1.08 3.032.865 3.579.811.548-.054 1.766-.723 2.015-1.421.25-.698.25-1.296.174-1.42-.075-.124-.276-.197-.579-.346-.302-.148-1.786-.878-2.063-.978-.276-.099-.479-.147-.68.098-.202.246-.78.978-.956 1.18-.176.198-.353.222-.652.074-.3-.148-1.26-.464-2.4-1.482-.887-.79-1.486-1.766-1.66-2.065-.175-.297-.018-.457.132-.605.131-.132.294-.345.44-.518.148-.172.197-.296.296-.493.098-.197.05-.366-.024-.512-.075-.148-.67-1.622-.92-2.218-.243-.58-.44-.502-.652-.502l-.559-.006c-.176 0-.467.057-.756.408z"></path>
     </svg>
@@ -1293,6 +1293,7 @@ class Component extends DCLogic {
       isHome: s === "home", isGeb: s === "geb", isTech: s === "tech", isStation: s === "station",
       isTerr: s === "terr", isServices: s === "services", isBio: s === "bio",
       isCases: s === "cases", isContact: s === "contact",
+      showTop: this.state.showTop === true,
       goHome: this.nav("home"), goGeb: this.nav("geb"), goTech: this.nav("tech"),
       goStation: this.nav("station"), goServices: this.nav("services"),
       goTerr: this.nav("terr"), goBio: this.nav("bio"),

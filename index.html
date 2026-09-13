@@ -1,483 +1,1280 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZELENI SVET Consultora - Soluciones Sostenibles</title>
-<meta name="description" content="Consultora especializada en soluciones sostenibles y ecológicas para empresas, municipios y particulares. Estudios de impacto ambiental, auditoría, planes de gestión y monitoreo.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<style>
-:root{
-  --forest:#0E2A1E; --deep:#123B28; --mid:#2E6B4A;
-  --paper:#F4F2EC; --paper2:#EAE7DE; --ink:#14211B; --muted:#4A554E; --faint:#5E6B62;
-  --accent:#C08A3E; --accentLight:#DFAE63;
-  --glass:rgba(255,255,255,.52); --glassBorder:rgba(255,255,255,.6);
-  --mono:'IBM Plex Mono',ui-monospace,monospace;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;color:var(--ink);font-family:Archivo,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;
-  background:radial-gradient(900px 600px at 8% 18%,rgba(46,107,74,.16) 0,rgba(46,107,74,0) 60%),
-             radial-gradient(760px 520px at 92% 62%,rgba(192,138,62,.14) 0,rgba(192,138,62,0) 62%),var(--paper);
-  overflow-x:hidden}
-h1,h2,h3,h4,p{margin:0}
-ul,ol{margin:0;padding:0;list-style:none}
-img{display:block;max-width:100%}
-a{color:var(--mid);text-decoration:none}
-a:hover{color:var(--forest)}
-input,textarea,select,button{font:inherit;color:inherit}
-.wrap{max-width:1280px;margin:0 auto;padding:0 28px}
-.mono{font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase}
-.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mid)}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
-.reveal.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
-@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
-@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@keyframes drift{0%{transform:translate3d(0,0,0) scale(1.06)}100%{transform:translate3d(0,-2.5%,0) scale(1.12)}}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(46,107,74,.45)}50%{box-shadow:0 0 0 14px rgba(46,107,74,0)}}
-
-/* header */
-header{position:sticky;top:0;z-index:50;background:rgba(244,242,236,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(20,33,27,.1)}
-.bar{display:flex;align-items:center;gap:24px;padding:14px 0}
-.brand{display:flex;align-items:center;gap:11px;flex:none}
-.brand img{height:38px;width:auto}
-.brand b{display:block;font-size:14px;font-weight:700;letter-spacing:.14em;color:var(--forest);line-height:1.1}
-.brand span{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--faint);text-transform:uppercase}
-nav.main{display:flex;gap:4px;margin-left:auto}
-nav.main a{padding:9px 13px;border-radius:999px;font-size:13.5px;font-weight:500;color:var(--ink)}
-nav.main a:hover{background:rgba(46,107,74,.1)}
-.lang{display:flex;border:1px solid rgba(20,33,27,.18);border-radius:999px;overflow:hidden;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em}
-.lang button{padding:7px 11px;border:0;background:transparent;color:var(--ink);cursor:pointer}
-.lang button.on{background:var(--forest);color:var(--paper)}
-.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 20px;border-radius:999px;background:var(--forest);color:var(--paper);font-weight:600;font-size:13.5px;border:0;cursor:pointer}
-.btn:hover{background:var(--mid);color:var(--paper)}
-.btn.light{background:var(--paper);color:var(--forest)}
-.btn.light:hover{background:var(--accent);color:var(--ink)}
-.btn.ghost{background:transparent;border:1px solid rgba(244,242,236,.4);color:var(--paper);font-weight:500}
-.btn.ghost:hover{background:rgba(244,242,236,.12);color:var(--paper)}
-.burger{display:none;margin-left:auto;border:1px solid rgba(20,33,27,.18);background:transparent;border-radius:8px;padding:8px 11px;cursor:pointer}
-
-/* hero */
-.hero{position:relative;background:var(--forest);color:var(--paper);overflow:hidden;min-height:min(86vh,740px);display:flex;align-items:flex-end}
-.hero .bg{position:absolute;inset:0;overflow:hidden}
-.hero .bg img{width:100%;height:100%;object-fit:cover;opacity:.5;animation:drift 26s ease-in-out infinite alternate}
-.hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,42,30,.9) 0,rgba(14,42,30,.76) 45%,rgba(14,42,30,.97) 100%)}
-.hero .inner{position:relative;width:100%;padding:120px 0 56px}
-.kick{display:flex;align-items:center;gap:14px;margin-bottom:26px;animation:rise .8s .05s both}
-.kick i{width:44px;height:1px;background:var(--accent);transform-origin:left;animation:grow 1s .3s both}
-.kick span{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#D8CFB8}
-.hero h1{font-size:clamp(38px,5.6vw,82px);line-height:1.02;font-weight:600;letter-spacing:-.025em;max-width:18ch;text-wrap:pretty;animation:rise .9s .12s both}
-.hero p.lead{margin-top:24px;max-width:54ch;font-size:clamp(15px,1.25vw,19px);line-height:1.6;color:rgba(244,242,236,.82);text-wrap:pretty;animation:rise .9s .22s both}
-.hero .cta{margin-top:38px;display:flex;flex-wrap:wrap;gap:12px;animation:rise .9s .3s both}
-.stats{margin-top:64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:rgba(244,242,236,.18);border:1px solid rgba(244,242,236,.18);animation:rise .9s .4s both}
-.stats div{background:rgba(244,242,236,.09);backdrop-filter:blur(14px) saturate(1.15);-webkit-backdrop-filter:blur(14px) saturate(1.15);padding:20px 22px}
-.stats b{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:38px;line-height:1}
-.stats span{display:block;margin-top:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:rgba(244,242,236,.62)}
-
-/* trust */
-.trust{background:var(--paper2);border-bottom:1px solid rgba(20,33,27,.09)}
-.trust .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:16px 34px;padding:22px 28px}
-.trust .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
-.trust .row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px}
-.trust img{height:46px;width:auto;opacity:.9}
-.trust em{font-style:normal;font-size:13px;font-weight:500;padding:7px 14px;border:1px solid rgba(20,33,27,.16);border-radius:999px}
-
-/* section head */
-section{padding:96px 0}
-.shead{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-end;justify-content:space-between;border-bottom:1px solid rgba(20,33,27,.14);padding-bottom:26px}
-.shead h2{margin-top:14px;font-size:clamp(28px,3.4vw,46px);line-height:1.06;font-weight:600;letter-spacing:-.02em;max-width:24ch;text-wrap:pretty}
-.shead p{max-width:40ch;font-size:15px;line-height:1.6;color:var(--muted);text-wrap:pretty}
-
-/* services accordion */
-.acc{border-bottom:1px solid rgba(20,33,27,.12)}
-.acc button{width:100%;display:flex;align-items:flex-start;gap:22px;padding:26px 6px;background:transparent;border:0;text-align:left;cursor:pointer}
-.acc button:hover{background:rgba(46,107,74,.05)}
-.acc .n{font-family:var(--mono);font-size:11.5px;color:#8A958D;padding-top:7px;width:30px;flex:none}
-.acc .t{flex:1;min-width:0}
-.acc .t strong{display:block;font-size:clamp(18px,2vw,25px);font-weight:500;letter-spacing:-.01em;line-height:1.25}
-.acc .body{max-height:0;overflow:hidden;opacity:0;transition:max-height .55s cubic-bezier(.2,.7,.2,1),opacity .45s ease}
-.acc.open .body{max-height:280px;opacity:1}
-.acc .body p{padding:14px 0 4px;max-width:62ch;font-size:15px;line-height:1.65;color:var(--muted);text-wrap:pretty}
-.tags{display:flex;flex-wrap:wrap;gap:8px;padding-top:12px}
-.tags span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);border:1px solid rgba(46,107,74,.3);border-radius:999px;padding:5px 11px}
-.acc .plus{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid rgba(20,33,27,.2);display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--mid);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
-.acc.open .plus{transform:rotate(45deg)}
-
-/* projects */
-.projects{background:var(--deep);color:var(--paper)}
-.projects .shead{border-color:rgba(244,242,236,.2)}
-.projects h2{font-size:clamp(26px,3.2vw,42px);font-weight:600;letter-spacing:-.02em;max-width:22ch;line-height:1.08;text-wrap:pretty}
-.pgrid{margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:20px}
-.pcard{display:block;color:var(--paper);border:1px solid rgba(244,242,236,.2);border-radius:14px;overflow:hidden;
-  background:rgba(244,242,236,.09);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);
-  box-shadow:0 14px 40px rgba(5,20,13,.28);transition:border-color .35s ease,background .35s ease,transform .5s cubic-bezier(.2,.7,.2,1)}
-.pcard:hover{border-color:rgba(192,138,62,.75);background:rgba(244,242,236,.16);transform:translateY(-4px);color:var(--paper)}
-.pcard .ph{aspect-ratio:4/3;overflow:hidden;background:var(--forest)}
-.pcard .ph img{width:100%;height:100%;object-fit:cover;filter:saturate(.85);transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .6s ease}
-.pcard:hover .ph img{transform:scale(1.07);filter:saturate(1.05)}
-.pcard .ph,.pcard .txt,.pcard .kind,.pcard .name,.pcard .res{display:block}
-.acc .body{display:block}
-.brand>span{display:flex;flex-direction:column;line-height:1.05}
-.stats b{display:block}
-.steps li>span{display:block}
-.pcard .txt{padding:18px 20px 22px}
-.pcard .kind{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--accentLight)}
-.pcard .name{margin-top:9px;font-size:17px;font-weight:500;line-height:1.3}
-.pcard .res{margin-top:10px;font-size:13px;line-height:1.55;color:rgba(244,242,236,.7)}
-
-/* process */
-.proc{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:56px;align-items:start}
-.proc h2{margin-top:14px;font-size:clamp(26px,3vw,40px);font-weight:600;letter-spacing:-.02em;line-height:1.08;max-width:20ch;text-wrap:pretty}
-.proc p.lead{margin-top:18px;max-width:44ch;font-size:15px;line-height:1.65;color:var(--muted);text-wrap:pretty}
-.steps{border-top:1px solid rgba(20,33,27,.14)}
-.steps li{display:flex;gap:20px;padding:22px 4px;border-bottom:1px solid rgba(20,33,27,.14)}
-.steps .n{font-family:var(--mono);font-size:11.5px;color:var(--mid);width:30px;flex:none;padding-top:4px}
-.steps strong{display:block;font-size:17px;font-weight:500}
-.steps p{margin-top:7px;font-size:14px;line-height:1.6;color:var(--muted);max-width:50ch}
-
-/* contact */
-.contact{background:var(--paper2);border-top:1px solid rgba(20,33,27,.1)}
-.contact .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:52px}
-.contact h2{margin-top:14px;font-size:clamp(26px,3vw,40px);font-weight:600;letter-spacing:-.02em;line-height:1.08;max-width:20ch;text-wrap:pretty}
-.contact p.lead{margin-top:16px;max-width:42ch;font-size:15px;line-height:1.65;color:var(--muted);text-wrap:pretty}
-.dl{margin-top:30px;border-top:1px solid rgba(20,33,27,.14)}
-.dl a,.dl div{display:flex;justify-content:space-between;gap:16px;padding:16px 2px;border-bottom:1px solid rgba(20,33,27,.14);color:var(--ink)}
-.dl a:hover{color:var(--mid)}
-.dl .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
-.dl .v{font-size:15px;font-weight:500}
-.map{margin-top:22px;border:1px solid rgba(20,33,27,.16);border-radius:12px;overflow:hidden;height:190px}
-.map iframe{width:100%;height:100%;border:0;filter:saturate(.85)}
-form{background:var(--glass);backdrop-filter:blur(18px) saturate(1.25);-webkit-backdrop-filter:blur(18px) saturate(1.25);
-  border:1px solid var(--glassBorder);border-radius:16px;box-shadow:0 16px 44px rgba(20,33,27,.1);padding:32px}
-form h3{font-size:20px;font-weight:600}
-form .hint{margin-top:8px;font-size:13.5px;color:var(--muted)}
-.fields{margin-top:24px;display:flex;flex-direction:column;gap:16px}
-.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
-label{display:flex;flex-direction:column;gap:7px}
-label .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
-input,textarea,select{padding:12px 14px;background:#fff;border:1px solid rgba(20,33,27,.18);border-radius:4px;font-size:14.5px;outline:none;width:100%}
-textarea{resize:vertical}
-input:focus,textarea:focus,select:focus{border-color:var(--mid);box-shadow:0 0 0 3px rgba(46,107,74,.14)}
-.hp{position:absolute;left:-9999px}
-
-/* footer */
-footer{background:var(--forest);color:rgba(244,242,236,.72)}
-.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:36px;padding:56px 28px 30px;max-width:1280px;margin:0 auto}
-.fgrid img{height:46px;width:auto}
-.fgrid p{margin-top:16px;max-width:34ch;font-size:13.5px;line-height:1.65}
-.fh{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-.fgrid ul{margin-top:14px;display:flex;flex-direction:column;gap:9px;font-size:13.5px}
-.fgrid ul a{color:rgba(244,242,236,.72)}
-.fgrid ul a:hover{color:var(--paper)}
-.fbot{max-width:1280px;margin:0 auto;padding:18px 28px 34px;border-top:1px solid rgba(244,242,236,.14);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:12px}
-
-/* wa fab */
-.wa{position:fixed;right:22px;bottom:22px;z-index:60;width:58px;height:58px;border-radius:50%;background:var(--mid);color:var(--paper);
-  display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(14,42,30,.3);animation:pulse 2.8s ease-out infinite}
-.wa:hover{background:var(--forest);color:var(--paper)}
-
-@media(max-width:860px){
-  nav.main{display:none;width:100%;margin:0;flex-direction:column;gap:2px;padding-bottom:12px}
-  nav.main.open{display:flex}
-  .bar{flex-wrap:wrap;gap:12px}
-  .burger{display:block}
-  section{padding:64px 0}
-  .hero .inner{padding:88px 0 44px}
-}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
+<x-dc>
+<helmet data-dc-atomics="">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#080C0B;color:#E9EEEB;font-family:Archivo,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4,p,ul,ol{margin:0}
+  ul,ol{padding:0;list-style:none}
+  a{color:#2FB6A8;text-decoration:none}
+  a:hover{color:#57B487}
+  input,textarea,select,button{font:inherit;color:inherit}
+  [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  [data-reveal].in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none;transition:none}}
+  @keyframes zs-rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+  @keyframes zs-grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @keyframes zs-scan{0%{transform:translateY(-100%)}100%{transform:translateY(400%)}}
+  @keyframes zs-blip{0%,100%{opacity:.25;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+  @keyframes zs-pulse{0%,100%{box-shadow:0 0 0 0 rgba(47,182,168,.4)}50%{box-shadow:0 0 0 13px rgba(47,182,168,0)}}
+</style>
+</helmet>
 
-<header>
-  <div class="wrap bar">
-    <a class="brand" href="#inicio">
-      <img src="https://millocba.github.io/zelenisvet/assets/img/logo1.png" alt="ZELENI SVET Consultora">
-      <span><b>ZELENI SVET</b><span data-i18n="kicker">Consultora ambiental</span></span>
-    </a>
-    <button class="burger" aria-label="Menú" onclick="document.querySelector('nav.main').classList.toggle('open')">☰</button>
-    <nav class="main">
-      <a href="#inicio" data-i18n="navHome">Inicio</a>
-      <a href="#servicios" data-i18n="navServ">Servicios</a>
-      <a href="#proyectos" data-i18n="navProj">Proyectos</a>
-      <a href="#contacto" data-i18n="navContact">Contacto</a>
-    </nav>
-    <div class="lang">
-      <button id="bes" class="on" onclick="setLang('es')">ES</button>
-      <button id="ben" onclick="setLang('en')">EN</button>
-    </div>
-    <a class="btn" href="https://wa.me/5493513001702" data-i18n="ctaQuote">Pedir cotización</a>
-  </div>
-</header>
+<div style="min-height:100vh;background:#080C0B">
 
-<main>
-<section id="inicio" class="hero" style="padding:0">
-  <div class="bg"><img src="https://zelenisvet.com.ar/encabezado1.png" alt=""></div>
-  <div class="veil"></div>
-  <div class="wrap inner">
-    <div class="kick"><i></i><span data-i18n="heroEyebrow">Córdoba · Argentina · RNCEA</span></div>
-    <h1 data-i18n="heroTitle">Consultoría ambiental con rigor técnico y criterio de gestión</h1>
-    <p class="lead" data-i18n="heroBody">Acompañamos a empresas, municipios y desarrolladores en la habilitación ambiental de sus proyectos: estudios, auditorías, planes de gestión y monitoreo con documentación lista para presentar.</p>
-    <div class="cta">
-      <a class="btn light" href="https://wa.me/5493513001702">
-        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.6a8.6 8.6 0 0 1-12.8 7.5L3.4 20.6l1.5-4.9A8.6 8.6 0 1 1 21 11.6Z"></path><path d="M9.4 8.5c.6 1.9 2.2 3.5 4.1 4.1l1-1.1 1.9.9c-.1 1-1 1.7-2 1.6-2.9-.3-5.3-2.7-5.6-5.6-.1-1 .6-1.9 1.6-2l.9 1.9-1 1.2"></path></svg>
-        <span data-i18n="heroCta1">Hablar por WhatsApp</span>
+  <header style="position:sticky;top:0;z-index:60;background:rgba(8,12,11,.86);backdrop-filter:blur(16px);border-bottom:1px solid rgba(233,238,235,.12)">
+    <div style="max-width:1340px;margin:0 auto;padding:12px 26px;display:flex;align-items:center;gap:20px">
+      <a href="#" onClick="{{ goHome }}" style="display:flex;align-items:center;gap:11px;flex:none;color:#E9EEEB" style-hover="color:#E9EEEB">
+        <span style="background:#F4F2EC;border-radius:8px;padding:5px 8px;display:flex;align-items:center">
+          <img src="https://millocba.github.io/zelenisvet/assets/img/logo1.png" alt="ZELENI SVET" style="height:26px;width:auto;display:block">
+        </span>
+        <span style="display:flex;flex-direction:column;line-height:1.08">
+          <span style="font-size:13.5px;font-weight:700;letter-spacing:.15em">ZELENI SVET</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.17em;text-transform:uppercase;color:#8B9A92">Gestión ambiental y territorial</span>
+        </span>
       </a>
-      <a class="btn ghost" href="#servicios" data-i18n="heroCta2">Ver servicios</a>
+      <div style="flex:none;display:flex;gap:5px;align-items:center;margin-left:auto">
+        <a href="#" onClick="{{ setEs }}" aria-label="Español" title="Español" style="width:30px;height:22px;border-radius:4px;overflow:hidden;border:1px solid {{ esBorder }};opacity:{{ esOp }};display:block" style-hover="opacity:1">
+          <span style="display:block;width:100%;height:100%;background:linear-gradient(180deg,#74ACDF 0 33.4%,#FFFFFF 33.4% 66.7%,#74ACDF 66.7% 100%)"></span>
+        </a>
+        <a href="#" onClick="{{ setEn }}" aria-label="English" title="English" style="width:30px;height:22px;border-radius:4px;overflow:hidden;border:1px solid {{ enBorder }};opacity:{{ enOp }};display:block;position:relative" style-hover="opacity:1">
+          <span style="display:block;width:100%;height:100%;background:repeating-linear-gradient(180deg,#B22234 0 3.2px,#FFFFFF 3.2px 6.4px)"></span>
+          <span style="position:absolute;left:0;top:0;width:44%;height:54%;background:#3C3B6E"></span>
+        </a>
+      </div>
+      <a href="#" onClick="{{ goContact }}" style="flex:none;padding:11px 17px;border-radius:8px;background:{{ accent }};color:#05100E;font-size:12.5px;font-weight:600;white-space:nowrap" style-hover="background:#57B487;color:#05100E">{{ ctaLabel }}</a>
     </div>
-    <div class="stats" id="stats"></div>
-  </div>
-</section>
+    <div style="max-width:1340px;margin:0 auto;padding:0 26px 10px">
+      <nav style="display:flex;flex-wrap:nowrap;gap:2px;overflow-x:auto;scrollbar-width:none">
+        <sc-for list="{{ menu }}" as="m" hint-placeholder-count="9">
+          <a href="#" onClick="{{ m.go }}" style="flex:none;padding:8px 12px;border-radius:7px;font-size:12.5px;font-weight:500;white-space:nowrap;color:{{ m.color }};background:{{ m.bg }}" style-hover="background:rgba(47,182,168,.14);color:#E9EEEB">{{ m.label }}</a>
+        </sc-for>
+      </nav>
+    </div>
+  </header>
 
-<div class="trust">
-  <div class="wrap">
-    <span class="lbl" data-i18n="trustLabel">Credenciales</span>
-    <div class="row">
-      <img src="https://millocba.github.io/zelenisvet/assets/img/logoCertificado.png" alt="Certificación RNCEA">
-      <div class="row" id="trust"></div>
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <main>
+    <section style="position:relative;overflow:hidden;background:#080C0B;min-height:min(90vh,780px);display:flex;align-items:flex-end">
+      <div style="position:absolute;inset:0">
+        <img src="assets/campana-campo.jpeg" alt="Campaña de medición itinerante con la estación Zeleni" style="width:100%;height:100%;object-fit:cover;object-position:center center;opacity:.42;filter:saturate(.7) contrast(1.05)">
+      </div>
+      <div style="position:absolute;inset:0;background:linear-gradient(175deg,rgba(8,12,11,.78) 0%,rgba(8,12,11,.62) 38%,rgba(8,12,11,.97) 100%)"></div>
+      <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(47,182,168,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(47,182,168,.09) 1px,transparent 1px); background-size: 76px 76px; mask-image: linear-gradient(180deg,rgba(0,0,0,.85),transparent 72%); width: 100%; align-self: center"></div>
+      <div style="position: relative; max-width: 1340px; margin: 0 auto; padding: 128px 26px 52px; width: 100%; padding-top: 60px">
+        <div style="display:flex;align-items:center;gap:13px;margin-bottom:24px;animation:zs-rise .8s .05s both">
+          <span style="width:40px;height:1px;background:{{ accent }};transform-origin:left;animation:zs-grow 1s .3s both"></span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#9BAAA2">Environmental intelligence · Córdoba, AR</span>
+        </div>
+        <h1 style="font-size:clamp(36px,5.1vw,76px);line-height:1.03;font-weight:600;letter-spacing:-.03em;max-width:22ch;text-wrap:pretty;animation:zs-rise .9s .12s both">Inteligencia territorial para decisiones ambientales que no pueden fallar.</h1>
+        <p style="margin-top:24px;max-width:58ch;font-size:clamp(15px,1.2vw,18.5px);line-height:1.62;color:#B4C2BA;text-wrap:pretty;animation:zs-rise .9s .22s both">Integramos ciencia ambiental, análisis territorial, monitoreo IoT y participación comunitaria para acompañar proyectos desde su viabilidad inicial hasta su operación y mejora continua.</p>
+        <div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:11px;animation:zs-rise .9s .3s both">
+          <a href="#" onClick="{{ goContact }}" style="padding:15px 23px;border-radius:9px;background:{{ accent }};color:#05100E;font-weight:600;font-size:14.5px" style-hover="background:#57B487;color:#05100E">Solicitar Diagnóstico Territorial</a>
+          <a href="#" onClick="{{ goGeb }}" style="padding:15px 23px;border-radius:9px;border:1px solid rgba(233,238,235,.28);color:#E9EEEB;font-weight:500;font-size:14.5px" style-hover="background:rgba(233,238,235,.09);color:#E9EEEB">Conocer el Método GEB</a>
+        </div>
+        <div style="margin-top:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:11px;animation:zs-rise .9s .4s both">
+          <sc-for list="{{ triad }}" as="x" hint-placeholder-count="3">
+            <div style="padding:20px 22px;border:1px solid rgba(233,238,235,.14);border-radius:12px;background:rgba(233,238,235,.05);backdrop-filter:blur(14px) saturate(1.1)">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">{{ x.k }}</div>
+              <div style="margin-top:9px;font-size:14px;line-height:1.5;color:#B4C2BA">{{ x.d }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#0D1412;border-bottom:1px solid rgba(233,238,235,.1)">
+      <div style="max-width:1340px;margin:0 auto;padding:24px 26px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 32px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#7E8D85">Credenciales</span>
+        <span style="background:#F4F2EC;border-radius:10px;padding:7px 11px;display:flex;align-items:center">
+          <img src="https://millocba.github.io/zelenisvet/assets/img/logoCertificado.png" alt="Certificación RNCEA" style="height:40px;width:auto;display:block">
+        </span>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ credentials }}" as="c" hint-placeholder-count="4">
+            <span style="font-size:12.5px;color:#B4C2BA;border:1px solid rgba(233,238,235,.18);border-radius:999px;padding:7px 13px">{{ c }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1340px;margin:0 auto;padding:92px 26px">
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:26px;align-items:flex-end;justify-content:space-between;border-bottom:1px solid rgba(233,238,235,.14);padding-bottom:24px">
+        <h2 style="font-size:clamp(26px,3.3vw,44px);line-height:1.07;font-weight:600;letter-spacing:-.025em;max-width:26ch;text-wrap:pretty">El ambiente dejó de ser solamente un expediente.</h2>
+        <p style="max-width:38ch;font-size:14.5px;line-height:1.6;color:#9BAAA2">Cinco riesgos que hoy corren en paralelo en cualquier proyecto industrial o municipal.</p>
+      </div>
+      <div style="margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:12px">
+        <sc-for list="{{ risks }}" as="r" hint-placeholder-count="5">
+          <div data-reveal="" style="padding:24px 22px 26px;border:1px solid rgba(233,238,235,.14);border-radius:13px;background:rgba(233,238,235,.035);transition:background .35s ease,border-color .35s ease" style-hover="background:rgba(47,182,168,.08);border-color:rgba(47,182,168,.4)">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#7E8D85">{{ r.n }}</div>
+            <h3 style="margin-top:12px;font-size:17.5px;font-weight:600;letter-spacing:-.01em">{{ r.t }}</h3>
+            <p style="margin-top:10px;font-size:13.5px;line-height:1.6;color:#9BAAA2;text-wrap:pretty">{{ r.d }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <p data-reveal="" style="margin-top:30px;padding:26px 28px;border-left:2px solid {{ accent }};background:rgba(47,182,168,.06);font-family:'Instrument Serif',Georgia,serif;font-size:clamp(19px,2.1vw,27px);line-height:1.35;max-width:46ch">Transformamos datos ambientales y territoriales en información útil para decidir antes de que el problema aparezca.</p>
+    </section>
+
+    <section style="background:#0D1412;border-top:1px solid rgba(233,238,235,.1);border-bottom:1px solid rgba(233,238,235,.1)">
+      <div style="max-width:1340px;margin:0 auto;padding:88px 26px">
+        <div data-reveal="">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">Método Zeleni GEB</div>
+          <h2 style="margin-top:14px;font-size:clamp(26px,3.2vw,42px);line-height:1.07;font-weight:600;letter-spacing:-.025em;max-width:24ch;text-wrap:pretty">Un método. Tres capas. Una misma inteligencia territorial.</h2>
+        </div>
+        <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px">
+          <sc-for list="{{ geb }}" as="g" hint-placeholder-count="3">
+            <a data-reveal="" href="#" onClick="{{ goGeb }}" style="display:block;padding:28px 26px 30px;border:1px solid rgba(233,238,235,.15);border-radius:14px;background:rgba(233,238,235,.04);color:#E9EEEB;transition:transform .5s cubic-bezier(.2,.7,.2,1),border-color .35s ease,background .35s ease" style-hover="transform:translateY(-5px);border-color:rgba(47,182,168,.5);background:rgba(47,182,168,.07);color:#E9EEEB">
+              <span style="display:flex;align-items:center;justify-content:space-between">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;color:{{ accent }}">{{ g.code }}</span>
+                <span style="width:7px;height:7px;border-radius:50%;background:{{ accent }};animation:zs-blip 3.4s ease-in-out infinite"></span>
+              </span>
+              <span style="display:block;margin-top:18px;font-size:clamp(21px,2.3vw,29px);font-weight:600;letter-spacing:-.02em">{{ g.name }}</span>
+              <span style="display:block;margin-top:6px;font-size:14px;color:#9BAAA2">{{ g.sub }}</span>
+              <span style="display:block;margin-top:20px;padding-top:18px;border-top:1px solid rgba(233,238,235,.12);font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:18px;line-height:1.4;color:#CBD6D0">{{ g.q }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1340px;margin:0 auto;padding:92px 26px">
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between">
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">Tecnología Zeleni</div>
+          <h2 style="margin-top:14px;font-size:clamp(26px,3.2vw,42px);line-height:1.07;font-weight:600;letter-spacing:-.025em">Del sensor al territorio</h2>
+          <p style="margin-top:14px;max-width:52ch;font-size:15px;line-height:1.62;color:#9BAAA2;text-wrap:pretty">Medimos el ambiente, georreferenciamos cada observación y transformamos las mediciones en información territorial.</p>
+        </div>
+        <a href="#" onClick="{{ goTech }}" style="font-size:13.5px;font-weight:600;border-bottom:1px solid rgba(47,182,168,.45)">Ver arquitectura de sensores →</a>
+      </div>
+      <div style="margin-top:36px;display:flex;flex-wrap:wrap;gap:9px;align-items:stretch">
+        <sc-for list="{{ pipeline }}" as="p" hint-placeholder-count="8">
+          <div data-reveal="" style="flex:1 1 132px;min-width:132px;padding:18px 16px;border:1px solid rgba(233,238,235,.14);border-radius:11px;background:rgba(233,238,235,.035);display:flex;flex-direction:column;gap:10px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.16em;color:{{ accent }}">{{ p.n }}</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.07em;text-transform:uppercase;line-height:1.35">{{ p.t }}</span>
+            <span style="margin-top:auto;height:2px;background:linear-gradient(90deg,rgba(47,182,168,.75),rgba(47,182,168,.07));transform-origin:left"></span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="background:#0D1412;border-top:1px solid rgba(233,238,235,.1)">
+      <div style="max-width:1340px;margin:0 auto;padding:88px 26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:48px;align-items:center">
+        <div data-reveal="">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">Estación de monitoreo</div>
+          <h2 style="margin-top:14px;font-size:clamp(24px,2.9vw,38px);line-height:1.08;font-weight:600;letter-spacing:-.025em;max-width:22ch;text-wrap:pretty">Un nodo portátil de monitoreo ambiental georreferenciado</h2>
+          <p style="margin-top:16px;max-width:50ch;font-size:15px;line-height:1.65;color:#9BAAA2;text-wrap:pretty">Arquitectura de sensores de bajo costo con alta resolución espacio-temporal: variables termodinámicas, material particulado, gases y georreferenciación continua de cada lectura.</p>
+          <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:7px">
+            <sc-for list="{{ varChips }}" as="v" hint-placeholder-count="8">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.09em;color:#CBD6D0;border:1px solid rgba(233,238,235,.2);border-radius:999px;padding:5px 11px">{{ v }}</span>
+            </sc-for>
+          </div>
+          <a href="#" onClick="{{ goStation }}" style="display:inline-block;margin-top:26px;padding:14px 21px;border-radius:9px;background:{{ accent }};color:#05100E;font-weight:600;font-size:14px" style-hover="background:#57B487;color:#05100E">Ver la estación en detalle</a>
+        </div>
+        <div data-reveal="" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div style="grid-column:1 / -1;border:1px solid rgba(233,238,235,.14);border-radius:13px;overflow:hidden;aspect-ratio:16/10">
+            <img src="assets/dashboard-respiro.jpeg" alt="Dashboard RESPIRO mostrando lecturas en vivo de la estación" style="width:100%;height:100%;object-fit:cover;object-position:center center">
+          </div>
+          <div style="border:1px solid rgba(233,238,235,.14);border-radius:13px;overflow:hidden;aspect-ratio:4/3">
+            <img src="assets/estacion-hardware.jpeg" alt="Interior de la estación: sensores, alimentación y datalogger" style="width:100%;height:100%;object-fit:cover;object-position:center center">
+          </div>
+          <div style="border:1px solid rgba(233,238,235,.14);border-radius:13px;overflow:hidden;aspect-ratio:4/3">
+            <img src="assets/banco-firmware.jpeg" alt="Banco de trabajo: desarrollo de firmware de la estación" style="width:100%;height:100%;object-fit:cover;object-position:center center">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1340px;margin:0 auto;padding:92px 26px">
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between;border-bottom:1px solid rgba(233,238,235,.14);padding-bottom:22px">
+        <h2 style="font-size:clamp(24px,2.9vw,38px);font-weight:600;letter-spacing:-.025em;max-width:24ch;line-height:1.08">Validaciones institucionales</h2>
+        <a href="#" onClick="{{ goCases }}" style="font-size:13.5px;font-weight:600;border-bottom:1px solid rgba(47,182,168,.45)">Ver caso Monte Buey →</a>
+      </div>
+      <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px">
+        <sc-for list="{{ validations }}" as="v" hint-placeholder-count="4">
+          <div data-reveal="" style="padding:22px;border:1px solid rgba(233,238,235,.14);border-radius:13px;background:rgba(233,238,235,.035)">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:{{ accent }}">{{ v.k }}</div>
+            <p style="margin-top:11px;font-size:14.5px;line-height:1.55;text-wrap:pretty">{{ v.t }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="max-width:1340px;margin:0 auto;padding:0 26px 92px">
+      <div data-reveal="" style="padding:44px 34px;border:1px solid rgba(201,160,99,.35);border-radius:16px;background:linear-gradient(135deg,rgba(201,160,99,.1),rgba(47,182,168,.05));display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:34px;align-items:center">
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#D8B072">Recurso descargable</div>
+          <h2 style="margin-top:14px;font-size:clamp(23px,2.6vw,34px);font-weight:600;letter-spacing:-.02em;line-height:1.1;max-width:24ch;text-wrap:pretty">¿Tu Estudio de Impacto Ambiental puede ser observado?</h2>
+          <p style="margin-top:14px;max-width:46ch;font-size:14.5px;line-height:1.6;color:#B4C2BA;text-wrap:pretty">Descargá gratis: los 10 errores críticos que frenan la aprobación de un Estudio de Impacto Ambiental.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <input type="text" placeholder="Nombre" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none" style-focus="border-color:#D8B072">
+          <input type="text" placeholder="Empresa u organismo" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none" style-focus="border-color:#D8B072">
+          <input type="email" placeholder="Email de trabajo" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none" style-focus="border-color:#D8B072">
+          <button onClick="{{ getLead }}" style="padding:14px 20px;border:none;border-radius:9px;background:#D8B072;color:#120D04;font-weight:600;font-size:14.5px;cursor:pointer" style-hover="background:#E6C48F">{{ leadLabel }}</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isGeb }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="border-bottom:1px solid rgba(233,238,235,.12)">
+      <div style="max-width:1340px;margin:0 auto;padding:70px 26px 54px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">Método Zeleni GEB</div>
+        <h1 style="margin-top:16px;font-size:clamp(30px,4.2vw,58px);line-height:1.04;font-weight:600;letter-spacing:-.03em;max-width:24ch;text-wrap:pretty">Un método. Tres capas. Una misma inteligencia territorial.</h1>
+        <p style="margin-top:18px;max-width:58ch;font-size:16px;line-height:1.62;color:#9BAAA2;text-wrap:pretty">GEOSFERA, ECOSFERA y BIOSFERA comparten información territorial, cartografía, datos, monitoreo y conocimiento acumulado. No son etapas aisladas: son capas de un mismo sistema.</p>
+        <div style="margin-top:30px;display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ gebTabs }}" as="g" hint-placeholder-count="3">
+            <a href="#" onClick="{{ g.pick }}" style="padding:12px 18px;border-radius:9px;border:1px solid {{ g.border }};background:{{ g.bg }};color:{{ g.fg }};font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase" style-hover="border-color:rgba(47,182,168,.6);color:#E9EEEB">{{ g.name }}</a>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    <section style="max-width:1340px;margin:0 auto;padding:54px 26px 92px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:start">
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">{{ layer.code }}</div>
+          <h2 style="margin-top:12px;font-size:clamp(28px,3.4vw,46px);font-weight:600;letter-spacing:-.03em;line-height:1.04">{{ layer.name }}</h2>
+          <div style="margin-top:8px;font-size:16px;color:#9BAAA2">{{ layer.sub }}</div>
+          <p style="margin-top:24px;padding:24px 26px;border-left:2px solid {{ accent }};background:rgba(47,182,168,.06);font-family:'Instrument Serif',Georgia,serif;font-size:clamp(19px,2.2vw,27px);line-height:1.35;text-wrap:pretty">{{ layer.q }}</p>
+          <div style="margin-top:26px">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#7E8D85">Entregables</div>
+            <ul style="margin-top:14px;display:flex;flex-direction:column;gap:9px">
+              <sc-for list="{{ layer.deliverables }}" as="d" hint-placeholder-count="3">
+                <li style="display:flex;gap:11px;font-size:14.5px;line-height:1.5"><span style="color:{{ accent }};font-family:'IBM Plex Mono',monospace">▸</span>{{ d }}</li>
+              </sc-for>
+            </ul>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="padding:26px;border:1px solid rgba(233,238,235,.14);border-radius:14px;background:rgba(233,238,235,.035)">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#7E8D85">Qué analizamos</div>
+            <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:7px">
+              <sc-for list="{{ layer.items }}" as="i" hint-placeholder-count="8">
+                <span style="font-size:13px;color:#CBD6D0;border:1px solid rgba(233,238,235,.18);border-radius:999px;padding:6px 12px">{{ i }}</span>
+              </sc-for>
+            </div>
+          </div>
+          <div style="padding:26px;border:1px solid rgba(233,238,235,.14);border-radius:14px;background:rgba(233,238,235,.035)">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#7E8D85">Herramientas y metodologías</div>
+            <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:7px">
+              <sc-for list="{{ layer.tools }}" as="tl" hint-placeholder-count="6">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:{{ accent }};border:1px solid rgba(47,182,168,.3);border-radius:999px;padding:6px 12px">{{ tl }}</span>
+              </sc-for>
+            </div>
+          </div>
+          <a href="#" onClick="{{ goServices }}" style="padding:22px 26px;border:1px solid rgba(233,238,235,.14);border-radius:14px;background:rgba(47,182,168,.07);color:#E9EEEB;display:flex;justify-content:space-between;align-items:center;gap:16px" style-hover="background:rgba(47,182,168,.13);color:#E9EEEB">
+            <span style="font-size:14.5px;line-height:1.5">Cada capa tiene su plan de trabajo asociado</span>
+            <span style="font-family:'IBM Plex Mono',monospace;color:{{ accent }}">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isTech }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="border-bottom:1px solid rgba(233,238,235,.12)">
+      <div style="max-width:1340px;margin:0 auto;padding:70px 26px 54px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">Tecnología y sensores</div>
+        <h1 style="margin-top:16px;font-size:clamp(30px,4.2vw,58px);line-height:1.04;font-weight:600;letter-spacing:-.03em;max-width:20ch">Del sensor al territorio</h1>
+        <p style="margin-top:18px;max-width:56ch;font-size:16px;line-height:1.62;color:#9BAAA2;text-wrap:pretty">Medimos el ambiente, georreferenciamos cada observación y transformamos las mediciones en información territorial.</p>
+      </div>
+    </section>
+
+    <section style="max-width:1340px;margin:0 auto;padding:56px 26px 0">
+      <div data-reveal="" style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#7E8D85">Arquitectura de sensores</div>
+      <div style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:12px">
+        <sc-for list="{{ sensors }}" as="s" hint-placeholder-count="6">
+          <div data-reveal="" style="padding:24px 22px 26px;border:1px solid rgba(233,238,235,.14);border-radius:13px;background:rgba(233,238,235,.035);transition:border-color .35s ease,background .35s ease" style-hover="border-color:rgba(47,182,168,.45);background:rgba(47,182,168,.07)">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+              <h3 style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;letter-spacing:.05em">{{ s.name }}</h3>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:{{ accent }}">{{ s.kind }}</span>
+            </div>
+            <p style="margin-top:12px;font-size:13.5px;line-height:1.6;color:#9BAAA2;text-wrap:pretty">{{ s.note }}</p>
+            <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:6px">
+              <sc-for list="{{ s.vars }}" as="v" hint-placeholder-count="3">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#CBD6D0;border:1px solid rgba(233,238,235,.18);border-radius:6px;padding:4px 9px">{{ v }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="max-width:1340px;margin:0 auto;padding:64px 26px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:40px;align-items:start">
+        <div data-reveal="">
+          <h2 style="font-size:clamp(23px,2.7vw,36px);font-weight:600;letter-spacing:-.025em;line-height:1.08;max-width:22ch;text-wrap:pretty">Sensores de bajo costo, metodología controlada</h2>
+          <p style="margin-top:16px;font-size:15px;line-height:1.65;color:#9BAAA2;max-width:52ch;text-wrap:pretty">Para asegurar la validez instrumental y mitigar la deriva técnica propia de los sensores low-cost, la metodología de captura de gases incorpora un proceso de calibración de línea base R0 en condiciones de aire limpio. Sobre estos valores de referencia, el firmware aplica curvas de regresión potencial empíricas que transforman las variaciones de resistencia eléctrica del material sensor en estimaciones relativas expresadas en partes por millón (ppm).</p>
+          <div style="margin-top:24px;padding:22px 24px;border:1px solid rgba(201,160,99,.4);border-radius:13px;background:rgba(201,160,99,.08)">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#D8B072">Rigor técnico</div>
+            <p style="margin-top:11px;font-size:14px;line-height:1.6;color:#DCD3C4;text-wrap:pretty">Las estimaciones provenientes de sensores MOS no son equivalentes a instrumental regulatorio certificado. Distinguimos explícitamente entre medición instrumental, estimación, indicador, monitoreo exploratorio y evidencia complementaria.</p>
+            <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:7px">
+              <sc-for list="{{ rigor }}" as="x" hint-placeholder-count="5">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#E6C48F;border:1px solid rgba(216,176,114,.4);border-radius:999px;padding:5px 11px">{{ x }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+        <div data-reveal="" style="border: 1px solid rgba(233,238,235,.14); border-radius: 14px; background: rgba(233,238,235,.035); padding: 26px; width: 568px; height: 527px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#7E8D85">Cadena de calibración</div>
+          <ol style="margin-top:18px;display:flex;flex-direction:column;gap:0">
+            <sc-for list="{{ calib }}" as="c" hint-placeholder-count="6">
+              <li style="display:flex;gap:16px;align-items:flex-start;padding:13px 0;border-bottom:1px solid rgba(233,238,235,.1)">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:{{ accent }};width:26px;flex:none;padding-top:3px">{{ c.n }}</span>
+                <span>
+                  <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.07em;text-transform:uppercase">{{ c.t }}</span>
+                  <span style="display:block;margin-top:5px;font-size:13px;line-height:1.55;color:#9BAAA2">{{ c.d }}</span>
+                </span>
+              </li>
+            </sc-for>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section style="background:#0D1412;border-top:1px solid rgba(233,238,235,.1)">
+      <div style="max-width:1340px;margin:0 auto;padding:80px 26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:44px;align-items:center">
+        <div data-reveal="">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">BME680 · Bosch BSEC</div>
+          <h2 style="margin-top:14px;font-size:clamp(23px,2.7vw,36px);font-weight:600;letter-spacing:-.025em;line-height:1.08;max-width:22ch;text-wrap:pretty">Procesamiento en tiempo real e Índice de Calidad del Aire</h2>
+          <p style="margin-top:16px;font-size:15px;line-height:1.65;color:#9BAAA2;max-width:50ch;text-wrap:pretty">Los datos del BME680 se procesan en tiempo real mediante el algoritmo BSEC de Bosch, integrado en el firmware desarrollado en Arduino IDE. BSEC realiza compensaciones dinámicas según las condiciones ambientales y genera un IAQ acompañado de su nivel de precisión (0 a 3).</p>
+        </div>
+        <div data-reveal="" style="border:1px solid rgba(233,238,235,.14);border-radius:14px;background:rgba(233,238,235,.035);padding:28px">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:14px">
+            <div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#7E8D85">BSEC IAQ</div>
+              <div style="font-family:'Instrument Serif',Georgia,serif;font-size:64px;line-height:1;margin-top:8px">{{ iaq }}</div>
+            </div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#9BAAA2;text-align:right;line-height:1.6">Precisión 0–3<br>Estabilizando</div>
+          </div>
+          <div style="margin-top:20px;height:9px;border-radius:999px;background:rgba(233,238,235,.1);overflow:hidden">
+            <div style="height:100%;width:{{ iaqPct }};border-radius:999px;background:linear-gradient(90deg,#57B487,#2FB6A8,#D8B072);transition:width 1.2s cubic-bezier(.2,.7,.2,1)"></div>
+          </div>
+          <div style="margin-top:12px;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#7E8D85">
+            <span>Excelente</span><span>Moderado</span><span>Deficiente</span>
+          </div>
+          <p style="margin-top:18px;font-size:12.5px;line-height:1.6;color:#7E8D85">Lectura ilustrativa del firmware. El IAQ es un índice procesado, no una medición regulatoria.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isStation }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="border-bottom:1px solid rgba(233,238,235,.12)">
+      <div style="max-width:1340px;margin:0 auto;padding:70px 26px 0">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">Estación de monitoreo ambiental Zeleni</div>
+        <h1 style="margin-top:16px;font-size:clamp(30px,4.2vw,58px);line-height:1.04;font-weight:600;letter-spacing:-.03em;max-width:22ch;text-wrap:pretty">Nodo portátil de monitoreo ambiental georreferenciado</h1>
+        <p style="margin-top:18px;max-width:62ch;font-size:16px;line-height:1.65;color:#9BAAA2;text-wrap:pretty">El diseño de la estación permite desplegar un nodo de datos de manera portátil e itinerante, basado en una arquitectura de sensores de bajo costo que prioriza la alta resolución espacio-temporal.</p>
+        <div style="margin-top:36px;border:1px solid rgba(233,238,235,.14);border-radius:16px 16px 0 0;border-bottom:0;overflow:hidden;aspect-ratio:21/9">
+          <img src="assets/estacion-hardware.jpeg" alt="Estación abierta: sensores, batería, datalogger y ventilación" style="width:100%;height:100%;object-fit:cover;object-position:center center">
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1340px;margin:0 auto;padding:64px 26px 0">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px">
+        <p data-reveal="" style="font-size:15px;line-height:1.7;color:#B4C2BA;text-wrap:pretty">El instrumento registra variables termodinámicas —temperatura, humedad relativa y presión atmosférica— mediante los sensores SCD30 y BME680, junto con las fracciones de material particulado PM1.0, PM2.5 y PM10 mediante el módulo de dispersión láser PMS5003.</p>
+        <p data-reveal="" style="font-size:15px;line-height:1.7;color:#B4C2BA;text-wrap:pretty">Para la cuantificación de gases, el sistema mide parámetros absolutos de dióxido de carbono mediante SCD30 y emplea sensores de semiconductores de óxido metálico MiCS-4514 y MQ-135 para estimar concentraciones de monóxido de carbono (CO), dióxido de nitrógeno (NO₂), amoníaco (NH₃), alcohol y compuestos orgánicos volátiles (VOC).</p>
+      </div>
+    </section>
+
+    <section style="max-width:1340px;margin:0 auto;padding:64px 26px">
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;border-bottom:1px solid rgba(233,238,235,.14);padding-bottom:20px">
+        <h2 style="font-size:clamp(22px,2.6vw,34px);font-weight:600;letter-spacing:-.025em">Variables monitoreadas</h2>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#7E8D85">12 parámetros · registro georreferenciado</span>
+      </div>
+      <div style="margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:11px">
+        <sc-for list="{{ variables }}" as="v" hint-placeholder-count="12">
+          <div data-reveal="" style="padding:20px;border:1px solid rgba(233,238,235,.14);border-radius:12px;background:rgba(233,238,235,.035);transition:border-color .35s ease,background .35s ease" style-hover="border-color:rgba(47,182,168,.45);background:rgba(47,182,168,.07)">
+            <div style="display:flex;align-items:baseline;gap:7px">
+              <span style="font-size:20px;font-weight:600;letter-spacing:-.01em">{{ v.name }}</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:{{ accent }}">{{ v.unit }}</span>
+            </div>
+            <p style="margin-top:9px;font-size:12.5px;line-height:1.55;color:#9BAAA2;text-wrap:pretty">{{ v.note }}</p>
+            <div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:{{ v.tagColor }}">{{ v.tag }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="background:#0D1412;border-top:1px solid rgba(233,238,235,.1);border-bottom:1px solid rgba(233,238,235,.1)">
+      <div style="max-width:1340px;margin:0 auto;padding:80px 26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:44px;align-items:start">
+        <div data-reveal="">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">Georreferenciación</div>
+          <h2 style="margin-top:14px;font-size:clamp(24px,2.9vw,40px);font-weight:600;letter-spacing:-.03em;line-height:1.06;max-width:20ch;text-wrap:pretty">Cada medición tiene un lugar y un momento.</h2>
+          <p style="margin-top:16px;font-size:15px;line-height:1.68;color:#9BAAA2;max-width:50ch;text-wrap:pretty">El eje estructurante de la metodología es la capacidad de georreferenciación continua. Mediante un módulo GPS integrado, cada lectura paramétrica recibe una marca temporal y espacial. El datalogging genera una matriz de datos georreferenciados compatible directamente con plataformas SIG.</p>
+          <div style="margin-top:26px;border:1px solid rgba(233,238,235,.14);border-radius:13px;overflow:hidden;aspect-ratio:4/3">
+            <img src="assets/campana-campo.jpeg" alt="Estación desplegada en campaña itinerante en espacio público" style="width:100%;height:100%;object-fit:cover;object-position:center 68%">
+          </div>
+        </div>
+        <div data-reveal="" style="border: 1px solid rgba(233,238,235,.14); border-radius: 14px; background: rgba(8,12,11,.6); overflow: hidden; width: 100%; height: 100%">
+          <div style="padding:16px 20px;border-bottom:1px solid rgba(233,238,235,.12);display:flex;justify-content:space-between;align-items:center">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#7E8D85">Registro · esquema de datalogging</span>
+            <span style="width:7px;height:7px;border-radius:50%;background:{{ accent }};animation:zs-blip 2.6s ease-in-out infinite"></span>
+          </div>
+          <div style="padding:8px 0">
+            <sc-for list="{{ schema }}" as="f" hint-placeholder-count="15">
+              <div style="display:flex;justify-content:space-between;gap:14px;padding:9px 20px;font-family:'IBM Plex Mono',monospace;font-size:12px;border-bottom:1px solid rgba(233,238,235,.06)">
+                <span style="color:#CBD6D0">{{ f.k }}</span>
+                <span style="color:{{ accent }}">{{ f.t }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="padding:16px 20px;border-top:1px solid rgba(233,238,235,.12);font-size:12.5px;line-height:1.6;color:#7E8D85">Matriz exportable a CSV e importable en QGIS como capa de puntos.</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="max-width:1340px;margin:0 auto;padding:80px 26px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:44px;align-items:center">
+        <div data-reveal="">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">Alta resolución espacio-temporal</div>
+          <h2 style="margin-top:14px;font-size:clamp(23px,2.7vw,36px);font-weight:600;letter-spacing:-.025em;line-height:1.08;max-width:22ch;text-wrap:pretty">Campañas itinerantes en lugar de un único punto fijo</h2>
+          <p style="margin-top:16px;font-size:15px;line-height:1.66;color:#9BAAA2;max-width:50ch;text-wrap:pretty">Una estación portátil permite obtener múltiples observaciones distribuidas territorialmente, y estudiar variabilidad espacial y temporal, corredores, gradientes, hotspots, zonas de exposición y diferencias entre horarios y sectores urbanos.</p>
+          <div style="margin-top:24px;padding:22px 24px;border:1px solid rgba(47,182,168,.35);border-radius:13px;background:rgba(47,182,168,.07);font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.7;letter-spacing:.04em;color:#CBD6D0">más puntos de observación<br>+ georreferenciación<br>+ tiempo<br>= mayor resolución territorial</div>
+        </div>
+        <div data-reveal="" style="display:grid;grid-template-columns:1fr 1fr;gap:11px">
+          <div style="border:1px solid rgba(233,238,235,.14);border-radius:13px;overflow:hidden;aspect-ratio:3/4">
+            <img src="assets/equipo-desarrollo.jpeg" alt="Desarrollo y verificación de la electrónica de la estación" style="width:100%;height:100%;object-fit:cover;object-position:center center">
+          </div>
+          <div style="border:1px solid rgba(233,238,235,.14);border-radius:13px;overflow:hidden;aspect-ratio:3/4">
+            <img src="assets/dashboard-respiro.jpeg" alt="Lecturas en vivo y tabla acumulada exportable a CSV" style="width:100%;height:100%;object-fit:cover;object-position:center center">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isTerr }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="border-bottom:1px solid rgba(233,238,235,.12)">
+      <div style="max-width:1340px;margin:0 auto;padding:70px 26px 54px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">Inteligencia territorial · SIG</div>
+        <h1 style="margin-top:16px;font-size:clamp(28px,3.9vw,54px);line-height:1.05;font-weight:600;letter-spacing:-.03em;max-width:26ch;text-wrap:pretty">Un sensor aislado genera números. Una red georreferenciada genera inteligencia territorial.</h1>
+      </div>
+    </section>
+    <section style="max-width:1340px;margin:0 auto;padding:56px 26px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px">
+        <div data-reveal="" style="padding:28px 26px;border:1px solid rgba(233,238,235,.14);border-radius:14px;background:rgba(233,238,235,.035)">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#7E8D85">Análisis SIG</div>
+          <div style="margin-top:16px;display:flex;flex-direction:column;gap:9px">
+            <sc-for list="{{ gisOps }}" as="o" hint-placeholder-count="9">
+              <span style="display:flex;gap:10px;font-size:14px;line-height:1.5"><span style="color:{{ accent }};font-family:'IBM Plex Mono',monospace">▸</span>{{ o }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div data-reveal="" style="padding:28px 26px;border:1px solid rgba(233,238,235,.14);border-radius:14px;background:rgba(233,238,235,.035)">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#7E8D85">Cruzamos las mediciones con</div>
+          <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:7px">
+            <sc-for list="{{ crossLayers }}" as="c" hint-placeholder-count="12">
+              <span style="font-size:13px;color:#CBD6D0;border:1px solid rgba(233,238,235,.18);border-radius:999px;padding:6px 12px">{{ c }}</span>
+            </sc-for>
+          </div>
+          <p style="margin-top:20px;padding-top:18px;border-top:1px solid rgba(233,238,235,.12);font-family:'Instrument Serif',Georgia,serif;font-size:20px;line-height:1.4;color:#CBD6D0;text-wrap:pretty">El objetivo es transformar mediciones puntuales en diagnósticos socioambientales territorialmente contextualizados.</p>
+        </div>
+      </div>
+    </section>
+    <section style="background:#0D1412;border-top:1px solid rgba(233,238,235,.1)">
+      <div style="max-width:1340px;margin:0 auto;padding:80px 26px">
+        <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-end;justify-content:space-between">
+          <div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">Observatorio como servicio · OaaS</div>
+            <h2 style="margin-top:14px;font-size:clamp(24px,2.9vw,40px);font-weight:600;letter-spacing:-.03em;line-height:1.06;max-width:22ch;text-wrap:pretty">Un observatorio ambiental para tu territorio, por suscripción</h2>
+          </div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9BAAA2;border:1px solid rgba(233,238,235,.2);border-radius:999px;padding:8px 14px">Suscripción anual · SaaS</span>
+        </div>
+        <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px">
+          <div data-reveal="" style="border:1px solid rgba(233,238,235,.14);border-radius:14px;background:rgba(8,12,11,.55);overflow:hidden">
+            <div style="padding:14px 18px;border-bottom:1px solid rgba(233,238,235,.12);font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#7E8D85">Vista de mapa · maqueta</div>
+            <div style="position:relative;aspect-ratio:4/3;background:#0A100E;overflow:hidden">
+              <iframe title="Córdoba, Argentina" loading="lazy" src="https://www.google.com/maps?q=C%C3%B3rdoba,%20C%C3%B3rdoba,%20Argentina&amp;z=12&amp;output=embed" style="position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;filter:invert(1) hue-rotate(155deg) saturate(.5) brightness(.82) contrast(1.1);opacity:.55"></iframe>
+              <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 40%,rgba(10,16,14,.28),rgba(10,16,14,.82))"></div>
+              <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(47,182,168,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(47,182,168,.16) 1px,transparent 1px);background-size:38px 38px"></div>
+              <div style="position:absolute;left:0;right:0;height:34%;background:linear-gradient(180deg,transparent,rgba(47,182,168,.16),transparent);animation:zs-scan 7s linear infinite"></div>
+              <span style="position:absolute;right:12px;top:12px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#0A100E;background:{{ accent }};border-radius:999px;padding:5px 11px;font-weight:600">Ilustrativo</span>
+              <sc-for list="{{ blips }}" as="b" hint-placeholder-count="7">
+                <span style="position:absolute;left:{{ b.x }};top:{{ b.y }};width:{{ b.s }};height:{{ b.s }};border-radius:50%;background:{{ b.c }};box-shadow:0 0 14px {{ b.c }};animation:zs-blip {{ b.d }} ease-in-out infinite"></span>
+              </sc-for>
+              <span style="position:absolute;left:14px;bottom:12px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:#B4C2BA">Córdoba · capa de puntos georreferenciados</span>
+            </div>
+          </div>
+          <div data-reveal="" style="padding:28px 26px;border:1px solid rgba(233,238,235,.14);border-radius:14px;background:rgba(233,238,235,.035)">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#7E8D85">Indicadores potenciales</div>
+            <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px">
+              <sc-for list="{{ oaasKpis }}" as="k" hint-placeholder-count="10">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;color:#CBD6D0;border:1px solid rgba(233,238,235,.16);border-radius:8px;padding:9px 11px">{{ k }}</span>
+              </sc-for>
+            </div>
+            <div style="margin-top:24px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#7E8D85">El dashboard permite</div>
+            <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:7px">
+              <sc-for list="{{ oaasFeatures }}" as="f" hint-placeholder-count="7">
+                <span style="font-size:13px;color:#CBD6D0;border:1px solid rgba(233,238,235,.18);border-radius:999px;padding:6px 12px">{{ f }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section style="max-width:1340px;margin:0 auto;padding:80px 26px">
+      <div data-reveal="" style="border-bottom:1px solid rgba(233,238,235,.14);padding-bottom:20px">
+        <h2 style="font-size:clamp(22px,2.6vw,34px);font-weight:600;letter-spacing:-.025em">Productos Zeleni</h2>
+      </div>
+      <div style="margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px">
+        <sc-for list="{{ products }}" as="p" hint-placeholder-count="4">
+          <div data-reveal="" style="padding:26px 22px 28px;border:1px solid rgba(233,238,235,.14);border-radius:13px;background:rgba(233,238,235,.035);display:flex;flex-direction:column;gap:11px;transition:border-color .35s ease,background .35s ease" style-hover="border-color:rgba(47,182,168,.45);background:rgba(47,182,168,.07)">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:{{ accent }}">{{ p.tag }}</span>
+            <h3 style="font-size:19px;font-weight:600;letter-spacing:-.01em;line-height:1.2">{{ p.name }}</h3>
+            <p style="font-size:13.5px;line-height:1.6;color:#9BAAA2;text-wrap:pretty">{{ p.d }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="border-bottom:1px solid rgba(233,238,235,.12)">
+      <div style="max-width:1340px;margin:0 auto;padding:70px 26px 54px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">Servicios</div>
+        <h1 style="margin-top:16px;font-size:clamp(30px,4.2vw,56px);line-height:1.04;font-weight:600;letter-spacing:-.03em;max-width:22ch;text-wrap:pretty">Tres planes, una misma capa de datos</h1>
+        <p style="margin-top:18px;max-width:54ch;font-size:16px;line-height:1.62;color:#9BAAA2;text-wrap:pretty">La sostenibilidad que sí es rentable: reducí riesgos y costos operativos y mejorá tu posicionamiento con soluciones ambientales basadas en datos.</p>
+      </div>
+    </section>
+    <section style="max-width:1340px;margin:0 auto;padding:56px 26px 88px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;align-items:stretch">
+        <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+          <div data-reveal="" style="padding:32px 28px 34px;border:1px solid rgba(233,238,235,.15);border-radius:16px;background:rgba(233,238,235,.04);display:flex;flex-direction:column;gap:14px;transition:transform .5s cubic-bezier(.2,.7,.2,1),border-color .35s ease" style-hover="transform:translateY(-5px);border-color:rgba(47,182,168,.5)">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">{{ p.code }}</span>
+            <h2 style="font-size:clamp(22px,2.4vw,30px);font-weight:600;letter-spacing:-.02em;line-height:1.12">{{ p.name }}</h2>
+            <p style="font-size:14.5px;line-height:1.6;color:#B4C2BA;text-wrap:pretty">{{ p.sub }}</p>
+            <div style="margin-top:6px;padding-top:18px;border-top:1px solid rgba(233,238,235,.12)">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#7E8D85">{{ p.listTitle }}</div>
+              <ul style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+                <sc-for list="{{ p.items }}" as="i" hint-placeholder-count="5">
+                  <li style="display:flex;gap:10px;font-size:13.5px;line-height:1.5;color:#CBD6D0"><span style="color:{{ accent }};font-family:'IBM Plex Mono',monospace">▸</span>{{ i }}</li>
+                </sc-for>
+              </ul>
+            </div>
+            <div style="margin-top:auto;padding-top:20px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:{{ accent }}">{{ p.model }}</div>
+            <a href="#" onClick="{{ goContact }}" style="padding:13px 19px;border-radius:9px;background:rgba(47,182,168,.14);border:1px solid rgba(47,182,168,.4);color:#E9EEEB;font-weight:600;font-size:13.5px;text-align:center" style-hover="background:{{ accent }};color:#05100E">Consultar plan</a>
+          </div>
+        </sc-for>
+      </div>
+      <div data-reveal="" style="margin-top:32px;padding:32px 30px;border:1px solid rgba(233,238,235,.14);border-radius:16px;background:rgba(233,238,235,.035)">
+        <p style="font-family:'Instrument Serif',Georgia,serif;font-size:clamp(20px,2.3vw,29px);line-height:1.35;max-width:56ch;text-wrap:pretty">Vendemos a la industria certeza técnica, continuidad operativa y reputación territorial, con tecnología propia y respaldo social verificable.</p>
+        <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:7px">
+          <sc-for list="{{ valueChips }}" as="v" hint-placeholder-count="8">
+            <span style="font-size:13px;color:#CBD6D0;border:1px solid rgba(233,238,235,.18);border-radius:999px;padding:6px 12px">{{ v }}</span>
+          </sc-for>
+        </div>
+      </div>
+
+      <div data-reveal="" style="margin-top:56px;display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;border-bottom:1px solid rgba(233,238,235,.14);padding-bottom:20px">
+        <h2 style="font-size:clamp(22px,2.6vw,34px);font-weight:600;letter-spacing:-.025em">Nuestros servicios clave</h2>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#7E8D85">10 líneas · se contratan por separado</span>
+      </div>
+      <div style="margin-top:6px">
+        <sc-for list="{{ classicServices }}" as="s" hint-placeholder-count="10">
+          <div data-reveal="" style="display:flex;gap:20px;align-items:flex-start;padding:20px 4px;border-bottom:1px solid rgba(233,238,235,.1)">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:{{ accent }};width:28px;flex:none;padding-top:5px">{{ s.n }}</span>
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font-size:17.5px;font-weight:500;letter-spacing:-.01em;line-height:1.25">{{ s.t }}</span>
+              <span style="display:block;margin-top:8px;font-size:14px;line-height:1.6;color:#9BAAA2;max-width:70ch;text-wrap:pretty">{{ s.d }}</span>
+            </span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isBio }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="border-bottom:1px solid rgba(233,238,235,.12)">
+      <div style="max-width:1340px;margin:0 auto;padding:70px 26px 54px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">Red Biosfera Urbana</div>
+        <h1 style="margin-top:16px;font-size:clamp(30px,4.2vw,56px);line-height:1.04;font-weight:600;letter-spacing:-.03em;max-width:22ch;text-wrap:pretty">Innovación social y educación ambiental con datos</h1>
+        <p style="margin-top:18px;max-width:58ch;font-size:16px;line-height:1.62;color:#9BAAA2;text-wrap:pretty">Transformamos estudiantes y comunidades en actores activos de la construcción de conocimiento ambiental territorial.</p>
+      </div>
+    </section>
+    <section style="max-width:1340px;margin:0 auto;padding:56px 26px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+        <sc-for list="{{ cycle }}" as="c" hint-placeholder-count="4">
+          <div data-reveal="" style="padding:26px 22px 28px;border:1px solid rgba(233,238,235,.14);border-radius:13px;background:rgba(233,238,235,.035)">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:{{ accent }}">{{ c.n }}</div>
+            <h3 style="margin-top:12px;font-size:17.5px;font-weight:600;line-height:1.22">{{ c.t }}</h3>
+            <p style="margin-top:9px;font-size:13.5px;line-height:1.6;color:#9BAAA2;text-wrap:pretty">{{ c.d }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+    <section style="background:#0D1412;border-top:1px solid rgba(233,238,235,.1);border-bottom:1px solid rgba(233,238,235,.1)">
+      <div style="max-width:1340px;margin:0 auto;padding:80px 26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:44px;align-items:start">
+        <div data-reveal="">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">Aula Viva</div>
+          <h2 style="margin-top:14px;font-size:clamp(24px,2.9vw,40px);font-weight:600;letter-spacing:-.03em;line-height:1.06;max-width:20ch">Del aula al territorio</h2>
+          <p style="margin-top:16px;font-size:15px;line-height:1.66;color:#9BAAA2;max-width:48ch;text-wrap:pretty">Los estudiantes miden variables ambientales, interpretan datos, mapean problemas, formulan hipótesis, contrastan resultados y desarrollan intervenciones ambientales en su propio entorno.</p>
+          <div style="margin-top:22px;display:flex;flex-wrap:wrap;gap:7px">
+            <sc-for list="{{ aulaExamples }}" as="a" hint-placeholder-count="6">
+              <span style="font-size:13px;color:#CBD6D0;border:1px solid rgba(233,238,235,.18);border-radius:999px;padding:6px 12px">{{ a }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div data-reveal="" style="padding:30px 28px;border:1px solid rgba(201,160,99,.35);border-radius:16px;background:rgba(201,160,99,.07)">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#D8B072">RSE · Padrinazgo empresarial</div>
+          <h2 style="margin-top:14px;font-size:clamp(21px,2.4vw,30px);font-weight:600;letter-spacing:-.02em;line-height:1.14;max-width:22ch;text-wrap:pretty">Red Biosfera Urbana para empresas</h2>
+          <p style="margin-top:13px;font-size:14.5px;line-height:1.6;color:#DCD3C4;text-wrap:pretty">Una empresa puede apadrinar proyectos educativos y ambientales, con impacto medible y reportes verificables.</p>
+          <div style="margin-top:22px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#B99A64">Métricas potenciales</div>
+          <div style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px">
+            <sc-for list="{{ rseMetrics }}" as="m" hint-placeholder-count="7">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.05em;color:#E6C48F;border:1px solid rgba(216,176,114,.35);border-radius:8px;padding:9px 11px">{{ m }}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isCases }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="border-bottom:1px solid rgba(233,238,235,.12)">
+      <div style="max-width:1340px;margin:0 auto;padding:70px 26px 54px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">Casos de aplicación</div>
+        <h1 style="margin-top:16px;font-size:clamp(30px,4.2vw,56px);line-height:1.04;font-weight:600;letter-spacing:-.03em;max-width:22ch;text-wrap:pretty">Corredor Verde de Monte Buey</h1>
+        <p style="margin-top:18px;max-width:56ch;font-size:16px;line-height:1.62;color:#9BAAA2;text-wrap:pretty">Ciencia, territorio y participación en un mismo proceso: del diagnóstico espacial al presupuesto participativo.</p>
+      </div>
+    </section>
+    <section style="max-width:1340px;margin:0 auto;padding:56px 26px">
+      <ol style="border-top:1px solid rgba(233,238,235,.14)">
+        <sc-for list="{{ monteBuey }}" as="s" hint-placeholder-count="7">
+          <li data-reveal="" style="display:flex;gap:24px;padding:24px 4px;border-bottom:1px solid rgba(233,238,235,.12);align-items:flex-start">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:{{ accent }};width:34px;flex:none;padding-top:5px">{{ s.n }}</span>
+            <span style="flex:1;min-width:0">
+              <span style="display:block;font-size:clamp(17px,1.9vw,22px);font-weight:600;letter-spacing:-.01em">{{ s.t }}</span>
+              <span style="display:block;margin-top:9px;font-size:14.5px;line-height:1.62;color:#9BAAA2;max-width:66ch;text-wrap:pretty">{{ s.d }}</span>
+            </span>
+          </li>
+        </sc-for>
+      </ol>
+      <div data-reveal="" style="margin-top:34px;padding:30px 28px;border:1px solid rgba(47,182,168,.35);border-radius:16px;background:rgba(47,182,168,.07);font-family:'IBM Plex Mono',monospace;font-size:clamp(14px,1.7vw,19px);letter-spacing:.1em;text-transform:uppercase;color:#CBD6D0">Ciencia + territorio + participación</div>
+    </section>
+    <section style="max-width:1340px;margin:0 auto;padding:0 26px 20px">
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;border-bottom:1px solid rgba(233,238,235,.14);padding-bottom:20px">
+        <h2 style="font-size:clamp(22px,2.6vw,34px);font-weight:600;letter-spacing:-.025em">Casos de éxito y proyectos</h2>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#7E8D85">Trabajos anteriores</span>
+      </div>
+      <div style="margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px">
+        <sc-for list="{{ classicProjects }}" as="p">
+          <figure data-reveal="" style="margin:0;border:1px solid rgba(233,238,235,.14);border-radius:13px;overflow:hidden;background:rgba(233,238,235,.035)">
+            <span style="display:block;aspect-ratio:4/3;overflow:hidden;background:#0A100E">
+              <span role="img" aria-label="{{ p.alt }}" style="display:block;width:100%;height:100%;background-image:url({{ p.img }});background-size:cover;background-position:center;filter:saturate(.85);transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .6s ease" style-hover="transform:scale(1.06);filter:saturate(1.05)"></span>
+            </span>
+            <figcaption style="padding:16px 18px 20px">
+              <span style="display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:{{ accent }}">{{ p.kind }}</span>
+              <span style="display:block;margin-top:8px;font-size:15.5px;font-weight:500;line-height:1.3;text-wrap:pretty">{{ p.title }}</span>
+            </figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </section>
+    <section style="max-width:1340px;margin:0 auto;padding:0 26px 88px">
+      <div data-reveal="" style="border-bottom:1px solid rgba(233,238,235,.14);padding-bottom:20px">
+        <h2 style="font-size:clamp(22px,2.6vw,34px);font-weight:600;letter-spacing:-.025em">Validaciones institucionales</h2>
+      </div>
+      <div style="margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px">
+        <sc-for list="{{ validations }}" as="v" hint-placeholder-count="4">
+          <div data-reveal="" style="padding:22px;border:1px solid rgba(233,238,235,.14);border-radius:13px;background:rgba(233,238,235,.035)">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:{{ accent }}">{{ v.k }}</div>
+            <p style="margin-top:11px;font-size:14.5px;line-height:1.55;text-wrap:pretty">{{ v.t }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+  <main>
+    <section style="border-bottom:1px solid rgba(233,238,235,.12)">
+      <div style="max-width:1340px;margin:0 auto;padding:70px 26px 54px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:{{ accent }}">Diagnóstico Territorial Express</div>
+        <h1 style="margin-top:16px;font-size:clamp(28px,3.9vw,54px);line-height:1.05;font-weight:600;letter-spacing:-.03em;max-width:24ch;text-wrap:pretty">¿Necesitás saber qué está pasando ambientalmente en tu territorio?</h1>
+        <p style="margin-top:18px;max-width:54ch;font-size:16px;line-height:1.62;color:#9BAAA2;text-wrap:pretty">¿Listo para el cambio? Contactanos. Para más información, o para solicitar una cotización sin compromiso, no dudes en escribirnos. <span style="color:{{ accent }};font-weight:500">¡Tu futuro es verde!</span></p>
+        <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:8px">
+          <sc-for list="{{ diagFacts }}" as="d" hint-placeholder-count="3">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:{{ accent }};border:1px solid rgba(47,182,168,.35);border-radius:999px;padding:8px 15px">{{ d }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    <section style="max-width:1340px;margin:0 auto;padding:56px 26px 92px">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:44px;align-items:start">
+        <div data-reveal="">
+          <div style="border-top:1px solid rgba(233,238,235,.14)">
+            <a href="mailto:informacion@zelenisvet.com.ar" style="display:flex;justify-content:space-between;gap:16px;padding:17px 2px;border-bottom:1px solid rgba(233,238,235,.12);color:#E9EEEB" style-hover="color:{{ accent }}">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#7E8D85">Email</span>
+              <span style="font-size:15px;font-weight:500">informacion@zelenisvet.com.ar</span>
+            </a>
+            <a href="https://wa.me/5493513001702" style="display:flex;justify-content:space-between;gap:16px;padding:17px 2px;border-bottom:1px solid rgba(233,238,235,.12);color:#E9EEEB" style-hover="color:{{ accent }}">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#7E8D85">WhatsApp</span>
+              <span style="font-size:15px;font-weight:500">351-3001702 / 351-7533434</span>
+            </a>
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:17px 2px;border-bottom:1px solid rgba(233,238,235,.12)">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#7E8D85">Base</span>
+              <span style="font-size:15px;font-weight:500">Córdoba, Argentina</span>
+            </div>
+          </div>
+          <div style="margin-top:26px;padding:26px;border:1px solid rgba(233,238,235,.14);border-radius:14px;background:rgba(233,238,235,.035)">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#7E8D85">Qué incluye el diagnóstico</div>
+            <ul style="margin-top:14px;display:flex;flex-direction:column;gap:9px">
+              <sc-for list="{{ diagIncludes }}" as="i" hint-placeholder-count="4">
+                <li style="display:flex;gap:11px;font-size:14px;line-height:1.55;color:#CBD6D0"><span style="color:{{ accent }};font-family:'IBM Plex Mono',monospace">▸</span>{{ i }}</li>
+              </sc-for>
+            </ul>
+          </div>
+        </div>
+        <div data-reveal="" style="padding:32px;border:1px solid rgba(233,238,235,.15);border-radius:16px;background:rgba(233,238,235,.04)">
+          <h2 style="font-size:21px;font-weight:600;letter-spacing:-.01em">Escribinos</h2>
+          <p style="margin-top:9px;font-size:13.5px;color:#9BAAA2">Diagnóstico, cotización, licenciamiento o una duda técnica: contanos qué necesitás y en qué etapa está el proyecto.</p>
+          <div style="margin-top:24px;display:flex;flex-direction:column;gap:15px">
+            <label style="display:flex;flex-direction:column;gap:7px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#7E8D85">Motivo de la consulta</span>
+              <select onChange="{{ pickReason }}" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none" style-focus="border-color:#2FB6A8">
+                <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="6">
+                  <option style="background:#0D1412">{{ r }}</option>
+                </sc-for>
+              </select>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:7px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#7E8D85">Nombre</span>
+              <input type="text" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none" style-focus="border-color:#2FB6A8">
+            </label>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px">
+              <label style="display:flex;flex-direction:column;gap:7px">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#7E8D85">Empresa u organismo</span>
+                <input type="text" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none;width:100%" style-focus="border-color:#2FB6A8">
+              </label>
+              <label style="display:flex;flex-direction:column;gap:7px">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#7E8D85">Email</span>
+                <input type="email" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none;width:100%" style-focus="border-color:#2FB6A8">
+              </label>
+            </div>
+            <label style="display:flex;flex-direction:column;gap:7px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#7E8D85">Etapa del proyecto</span>
+              <select style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none">
+                <sc-for list="{{ stages }}" as="s" hint-placeholder-count="5">
+                  <option style="background:#0D1412">{{ s }}</option>
+                </sc-for>
+              </select>
+            </label>
+            <label style="display:flex;flex-direction:column;gap:7px">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#7E8D85">Qué necesitás resolver</span>
+              <textarea rows="4" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none;resize:vertical" style-focus="border-color:#2FB6A8"></textarea>
+            </label>
+            <div style="display:flex;flex-wrap:wrap;gap:9px;align-items:center">
+              <button onClick="{{ submit }}" style="flex:1 1 180px;padding:15px 22px;border:none;border-radius:9px;background:{{ accent }};color:#05100E;font-weight:600;font-size:14.5px;cursor:pointer" style-hover="background:#57B487">{{ submitLabel }}</button>
+              <a href="https://wa.me/5493513001702" style="flex:0 0 auto;padding:14px 20px;border:1px solid rgba(233,238,235,.22);border-radius:9px;color:#E9EEEB;font-size:14px;font-weight:500" style-hover="background:rgba(233,238,235,.08);color:#E9EEEB">O escribinos por WhatsApp</a>
+            </div>
+            <p style="font-size:12px;line-height:1.6;color:#7E8D85">Respondemos consultas técnicas y cotizaciones sin compromiso dentro de las 48 horas hábiles.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  </sc-if>
+
+  <footer style="background: #0B1110; border-top: 1px solid rgba(233,238,235,.12); padding-top: 20px; padding-right: 20px; padding-bottom: 10px; padding-left: 20px">
+    <div style="max-width:1340px;margin:0 auto;padding:52px 26px 0;display:flex;flex-wrap:wrap;gap:30px 44px;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">
+        <span style="background:#F4F2EC;border-radius:12px;padding:12px 16px;display:flex;align-items:center">
+          <img src="https://millocba.github.io/zelenisvet/assets/img/logo1.png" alt="ZELENI SVET Consultora" style="height:46px;width:auto;display:block;object-position:center">
+        </span>
+        <span style="background:#F4F2EC;border-radius:12px;padding:10px 14px;display:flex;align-items:center">
+          <img src="https://millocba.github.io/zelenisvet/assets/img/logoCertificado.png" alt="Certificación RNCEA" style="height:50px;width:auto;display:block;object-position:center">
+        </span>
+      </div>
+      <p style="flex:1 1 380px;max-width:56ch;font-size:14px;line-height:1.7;color:#8B9A92;text-wrap:pretty">Ecosistema integrado de gestión territorial y ambiental: diagnóstico técnico, ejecución territorial y apropiación comunitaria mediante inteligencia territorial.</p>
     </div>
-  </div>
+
+    <div style="max-width:1340px;margin:0 auto;padding:26px 26px 0;display:flex;flex-wrap:wrap;gap:8px 26px;align-items:baseline;font-size:14.5px">
+      <a href="mailto:informacion@zelenisvet.com.ar" style="color:#B4C2BA" style-hover="color:{{ accent }}">informacion@zelenisvet.com.ar</a>
+      <a href="https://wa.me/5493513001702" style="color:#B4C2BA" style-hover="color:{{ accent }}">351-3001702 / 351-7533434</a>
+      <span style="color:#8B9A92">Córdoba, Argentina</span>
+    </div>
+
+    <div style="max-width:1340px;margin:0 auto;padding:22px 26px 0">
+      <p style="font-size: 12.5px; line-height: 1.65; color: #7E8D85; text-wrap: pretty; height: 100%">Nota técnica: los sensores de bajo costo generan estimaciones e indicadores de monitoreo exploratorio. No sustituyen instrumental regulatorio certificado.</p>
+    </div>
+
+    <div style="max-width: 1340px; margin: 26px auto 0; padding: 16px 26px 32px; border-top: 1px solid rgba(233,238,235,.1); font-size: 12px; color: #7E8D85; text-align: center; width: 100%; height: 100%; padding-bottom: 16px">
+      © 2026 ZELENI SVET · Gestión ambiental y territorial
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5493513001702" aria-label="WhatsApp" style="position:fixed;right:20px;bottom:20px;z-index:70;width:56px;height:56px;border-radius:50%;background:{{ accent }};color:#05100E;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(0,0,0,.4);animation:zs-pulse 3s ease-out infinite" style-hover="background:#57B487;color:#05100E">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 11.6a8.6 8.6 0 0 1-12.8 7.5L3.4 20.6l1.5-4.9A8.6 8.6 0 1 1 21 11.6Z"></path>
+      <path d="M9.4 8.5c.6 1.9 2.2 3.5 4.1 4.1l1-1.1 1.9.9c-.1 1-1 1.7-2 1.6-2.9-.3-5.3-2.7-5.6-5.6-.1-1 .6-1.9 1.6-2l.9 1.9-1 1.2"></path>
+    </svg>
+  </a>
+
 </div>
 
-<section id="servicios">
-  <div class="wrap">
-    <div class="shead reveal">
-      <div>
-        <div class="eyebrow" data-i18n="servEyebrow">Servicios</div>
-        <h2 data-i18n="servTitle">Diez líneas de trabajo, un mismo estándar de entrega</h2>
-      </div>
-      <p data-i18n="servBody">Cada servicio se contrata por separado o como paquete integral. Tocá una línea para ver el alcance.</p>
-    </div>
-    <div id="services"></div>
-    <p class="reveal" style="margin-top:30px;font-size:14px;color:var(--muted)">
-      <span data-i18n="servFoot">¿Necesitás una solución específica?</span>
-      <a href="#contacto" style="font-weight:600;border-bottom:1px solid rgba(46,107,74,.4)" data-i18n="servFootLink">Escribinos y lo vemos</a>
-    </p>
-  </div>
-</section>
-
-<section id="proyectos" class="projects">
-  <div class="wrap">
-    <div class="shead">
-      <h2 class="reveal" data-i18n="projTitle">Casos de éxito, resultados verificables</h2>
-    </div>
-    <div class="pgrid" id="projects"></div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap proc">
-    <div class="reveal">
-      <div class="eyebrow" data-i18n="procEyebrow">Cómo trabajamos</div>
-      <h2 data-i18n="procTitle">Un proceso claro, con hitos y entregables</h2>
-      <p class="lead" data-i18n="procBody">Sabés desde el día uno qué se entrega, cuándo y ante qué organismo se presenta. Sin sorpresas de plazos ni de honorarios.</p>
-      <a class="btn" style="margin-top:26px" href="https://wa.me/5493513001702" data-i18n="procCta">Solicitar propuesta</a>
-    </div>
-    <ol class="steps" id="steps"></ol>
-  </div>
-</section>
-
-<section id="contacto" class="contact">
-  <div class="wrap grid">
-    <div class="reveal">
-      <div class="eyebrow" data-i18n="contactEyebrow">Contacto</div>
-      <h2 data-i18n="contactTitle">¿Listo para el cambio? Escribinos.</h2>
-      <p class="lead" data-i18n="contactBody">Respondemos consultas técnicas y cotizaciones sin compromiso dentro de las 48 horas hábiles.</p>
-      <div class="dl">
-        <a href="mailto:informacion@zelenisvet.com.ar"><span class="k">Email</span><span class="v">informacion@zelenisvet.com.ar</span></a>
-        <a href="https://wa.me/5493513001702"><span class="k">WhatsApp</span><span class="v">351-3001702 / 351-7533434</span></a>
-        <div><span class="k" data-i18n="contactCity">Ubicación</span><span class="v">Córdoba, Argentina</span></div>
-      </div>
-      <div class="map">
-        <iframe title="Córdoba, Argentina" loading="lazy" src="https://www.google.com/maps?q=C%C3%B3rdoba,%20C%C3%B3rdoba,%20Argentina&z=13&output=embed"></iframe>
-      </div>
-    </div>
-    <form class="reveal" action="#" method="post" onsubmit="return sendForm(event)">
-      <h3 data-i18n="formTitle">Envianos un mensaje</h3>
-      <p class="hint" data-i18n="formBody">Contanos el proyecto y el plazo que manejás.</p>
-      <div class="fields">
-        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label><span class="k" data-i18n="fName">Nombre</span><input type="text" name="nombre" required></label>
-        <div class="two">
-          <label><span class="k" data-i18n="fMail">Correo electrónico</span><input type="email" name="email" required></label>
-          <label><span class="k" data-i18n="fPhone">Teléfono</span><input type="tel" name="telefono"></label>
-        </div>
-        <label><span class="k" data-i18n="fNeed">Servicio de interés</span><select name="servicio" id="servSelect"></select></label>
-        <label><span class="k" data-i18n="fMsg">Mensaje</span><textarea name="mensaje" rows="4" required></textarea></label>
-        <button class="btn" type="submit" id="submitBtn" data-i18n="submit">Enviar consulta</button>
-      </div>
-    </form>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="fgrid">
-    <div>
-      <img src="https://millocba.github.io/zelenisvet/assets/img/logo1.png" alt="ZELENI SVET Consultora">
-      <p data-i18n="footBlurb">Consultora especializada en soluciones sostenibles para empresas, municipios y particulares.</p>
-    </div>
-    <div>
-      <div class="fh" data-i18n="navServ">Servicios</div>
-      <ul id="footServices"></ul>
-    </div>
-    <div>
-      <div class="fh" data-i18n="navContact">Contacto</div>
-      <ul>
-        <li><a href="mailto:informacion@zelenisvet.com.ar">informacion@zelenisvet.com.ar</a></li>
-        <li><a href="https://wa.me/5493513001702">351-3001702</a></li>
-        <li>Córdoba, Argentina</li>
-      </ul>
-    </div>
-    <div>
-      <img src="https://millocba.github.io/zelenisvet/assets/img/logoCertificado.png" alt="Certificación RNCEA" style="height:62px">
-      <div class="fh" style="margin-top:10px;color:rgba(244,242,236,.72)" data-i18n="cert">Certificación RNCEA</div>
-    </div>
-  </div>
-  <div class="fbot">
-    <span>© 2026 ZELENI SVET Consultora</span>
-    <span class="mono" style="font-size:10.5px" data-i18n="footNote">Diseño web sostenible</span>
-  </div>
-</footer>
-
-<a class="wa" href="https://wa.me/5493513001702" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.6a8.6 8.6 0 0 1-12.8 7.5L3.4 20.6l1.5-4.9A8.6 8.6 0 1 1 21 11.6Z"></path><path d="M9.4 8.5c.6 1.9 2.2 3.5 4.1 4.1l1-1.1 1.9.9c-.1 1-1 1.7-2 1.6-2.9-.3-5.3-2.7-5.6-5.6-.1-1 .6-1.9 1.6-2l.9 1.9-1 1.2"></path></svg>
-</a>
-
-<script>
-var SERVICES=[
- {es:["Asesoramiento Sostenible","Guía experta para implementar prácticas empresariales ecológicas y responsables, asegurando el cumplimiento normativo.",["Normativa","Estrategia"]],en:["Sustainability Advisory","Expert guidance to implement responsible, ecological business practices while staying compliant.",["Compliance","Strategy"]]},
- {es:["Tecnologías Verdes","Implementación de soluciones innovadoras y eficientes para reducir el impacto ambiental.",["Eficiencia","Energía"]],en:["Green Technologies","Innovative, efficient solutions deployed to cut environmental impact.",["Efficiency","Energy"]]},
- {es:["Formación y Talleres","Capacitación a tu equipo en temas clave de sostenibilidad y gestión ambiental.",["Capacitación","In-company"]],en:["Training & Workshops","Team training on core sustainability and environmental management topics.",["Training","In-company"]]},
- {es:["Aviso de Proyecto y EsIA","Gestión de la documentación y realización de los estudios necesarios para la aprobación legal de tus proyectos.",["Habilitación","Ley 10.208"]],en:["Project Notice & EIA","Documentation and studies required for the legal approval of your projects.",["Permitting","Law 10.208"]]},
- {es:["Auditoría Ambiental","Evaluación detallada del cumplimiento normativo y del desempeño ambiental de tus operaciones y procesos.",["Auditoría","Riesgo"]],en:["Environmental Audit","Detailed review of regulatory compliance and environmental performance across operations.",["Audit","Risk"]]},
- {es:["Plan de Gestión Ambiental (PGA)","Diseño e implementación de estrategias para mitigar impactos, optimizar recursos y mejorar tu gestión ecológica.",["PGA","Mitigación"]],en:["Environmental Management Plan","Strategies to mitigate impacts, optimise resources and improve environmental management.",["EMP","Mitigation"]]},
- {es:["Monitoreo","Medición y seguimiento constante de indicadores ambientales clave: agua, aire y residuos.",["Agua","Aire","Residuos"]],en:["Monitoring","Continuous measurement of key environmental indicators: water, air and waste.",["Water","Air","Waste"]]},
- {es:["Soluciones Basadas en la Naturaleza","Acciones inspiradas en la naturaleza —techos verdes, jardines verticales— para desafíos sociales y ambientales.",["SbN","Infra verde"]],en:["Nature-based Solutions","Nature-inspired actions — green roofs, vertical gardens — for social and environmental challenges.",["NbS","Green infra"]]},
- {es:["Dispositivos de Educación Ambiental","Herramientas y materiales interactivos para promover la conciencia y la acción sostenible en espacios públicos o privados.",["Interpretación","Señalética"]],en:["Environmental Education Devices","Interactive tools and materials that drive awareness and action in public or private spaces.",["Interpretation","Signage"]]},
- {es:["Observatorio Urbano / Diagnóstico","Análisis y recopilación de datos para un diagnóstico completo de sostenibilidad urbana o territorial.",["Datos","Planificación"]],en:["Urban Observatory / Baseline","Data collection and analysis for a complete urban or territorial sustainability baseline.",["Data","Planning"]]}
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#2FB6A8&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#2FB6A8&quot;,&quot;#57B487&quot;,&quot;#7FA9D4&quot;,&quot;#C9A063&quot;],&quot;section&quot;:&quot;Identidad&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Interacción&quot;},&quot;iaqDemo&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:50,&quot;min&quot;:0,&quot;max&quot;:500,&quot;step&quot;:10,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Demo&quot;}}">
+const MENU = [
+  ["home","Inicio"],["geb","GEB"],["tech","Tecnología"],["station","Estación"],
+  ["terr","Territorio"],["services","Servicios"],["bio","Biosfera"],
+  ["cases","Casos"],["contact","Contacto"]
 ];
-var PROJECTS=[
- {img:"https://millocba.github.io/zelenisvet/assets/img/imagen3.jpeg",es:["Análisis y ensayos de calidad","Auditoría ambiental","Verificación de parámetros en laboratorio."],en:["Analysis & quality testing","Environmental audit","Laboratory verification of parameters."]},
- {img:"https://millocba.github.io/zelenisvet/assets/img/imagen2.jpeg",es:["Monitoreo ambiental en campo","Monitoreo","Medición de indicadores in situ."],en:["Field environmental monitoring","Monitoring","On-site measurement of indicators."]},
- {img:"https://millocba.github.io/zelenisvet/assets/img/imagen1.jpeg",es:["Capacitación en gestión ambiental","Formación y talleres","Equipos formados en normativa aplicable."],en:["Environmental management training","Training & workshops","Teams trained on applicable regulation."]},
- {img:"https://millocba.github.io/zelenisvet/assets/img/imagen4.jpeg",es:["Diseño biofílico y bienestar","SbN","Jardín vertical y confort interior."],en:["Biophilic design & wellbeing","NbS","Vertical garden and indoor comfort."]}
+
+const TRIAD = [
+  {k:"Ciencia",d:"Metodologías reconocidas, trazabilidad documental y criterio técnico verificable."},
+  {k:"Territorio",d:"Cartografía, SIG y lectura del lugar donde el proyecto realmente se inserta."},
+  {k:"Tecnología",d:"Sensores propios, datalogging georreferenciado y visualización de datos."}
 ];
-var COPY={
- es:{kicker:"Consultora ambiental",navHome:"Inicio",navServ:"Servicios",navProj:"Proyectos",navContact:"Contacto",ctaQuote:"Pedir cotización",
-  heroEyebrow:"Córdoba · Argentina · RNCEA",heroTitle:"Consultoría ambiental con rigor técnico y criterio de gestión",
-  heroBody:"Acompañamos a empresas, municipios y desarrolladores en la habilitación ambiental de sus proyectos: estudios, auditorías, planes de gestión y monitoreo con documentación lista para presentar.",
-  heroCta1:"Hablar por WhatsApp",heroCta2:"Ver servicios",trustLabel:"Credenciales",
-  trust:["Registro RNCEA","Ley Provincial 10.208","LEED · Certificación de edificios"],
-  servEyebrow:"Servicios",servTitle:"Diez líneas de trabajo, un mismo estándar de entrega",
-  servBody:"Cada servicio se contrata por separado o como paquete integral. Tocá una línea para ver el alcance.",
-  servFoot:"¿Necesitás una solución específica?",servFootLink:"Escribinos y lo vemos",
-  projTitle:"Casos de éxito, resultados verificables",
-  procEyebrow:"Cómo trabajamos",procTitle:"Un proceso claro, con hitos y entregables",
-  procBody:"Sabés desde el día uno qué se entrega, cuándo y ante qué organismo se presenta. Sin sorpresas de plazos ni de honorarios.",
-  procCta:"Solicitar propuesta",
-  steps:[["01","Diagnóstico inicial","Relevamiento del proyecto, marco normativo aplicable y definición del alcance."],["02","Propuesta y plan de trabajo","Entregables, plazos, honorarios y organismo de presentación por escrito."],["03","Estudios y gestión","Trabajo de campo, análisis, redacción técnica y tramitación ante la autoridad."],["04","Seguimiento y monitoreo","Indicadores, informes periódicos y actualización del plan de gestión."]],
-  contactEyebrow:"Contacto",contactTitle:"¿Listo para el cambio? Escribinos.",
-  contactBody:"Respondemos consultas técnicas y cotizaciones sin compromiso dentro de las 48 horas hábiles.",
-  contactCity:"Ubicación",formTitle:"Envianos un mensaje",formBody:"Contanos el proyecto y el plazo que manejás.",
-  fName:"Nombre",fMail:"Correo electrónico",fPhone:"Teléfono",fNeed:"Servicio de interés",fMsg:"Mensaje",
-  submit:"Enviar consulta",submitDone:"Consulta enviada ✓",
-  footBlurb:"Consultora especializada en soluciones sostenibles para empresas, municipios y particulares.",
-  cert:"Certificación RNCEA",footNote:"Diseño web sostenible",
-  stats:[["10","Líneas de servicio"],["RNCEA","Registro vigente"],["48 h","Respuesta a consultas"],["LEED","Proyecto premiado"]]},
- en:{kicker:"Environmental consultancy",navHome:"Home",navServ:"Services",navProj:"Projects",navContact:"Contact",ctaQuote:"Request a quote",
-  heroEyebrow:"Córdoba · Argentina · RNCEA",heroTitle:"Environmental consulting with technical rigour and management judgement",
-  heroBody:"We support companies, municipalities and developers through environmental permitting: studies, audits, management plans and monitoring — with documentation ready to file.",
-  heroCta1:"Chat on WhatsApp",heroCta2:"See services",trustLabel:"Credentials",
-  trust:["RNCEA registry","Provincial Law 10.208","LEED · Building certification"],
-  servEyebrow:"Services",servTitle:"Ten service lines, one delivery standard",
-  servBody:"Each service can be contracted on its own or as a full package. Tap a line to see its scope.",
-  servFoot:"Need something specific?",servFootLink:"Write to us",
-  projTitle:"Case studies with verifiable results",
-  procEyebrow:"How we work",procTitle:"A clear process, with milestones and deliverables",
-  procBody:"From day one you know what is delivered, when, and to which authority it is filed. No surprises on timing or fees.",
-  procCta:"Request a proposal",
-  steps:[["01","Initial assessment","Project review, applicable regulation and scope definition."],["02","Proposal & work plan","Deliverables, timing, fees and filing authority, in writing."],["03","Studies & filing","Fieldwork, analysis, technical writing and processing before the authority."],["04","Follow-up & monitoring","Indicators, periodic reports and management-plan updates."]],
-  contactEyebrow:"Contact",contactTitle:"Ready for the change? Write to us.",
-  contactBody:"We answer technical questions and no-commitment quotes within 48 business hours.",
-  contactCity:"Location",formTitle:"Send us a message",formBody:"Tell us about the project and your timeline.",
-  fName:"Name",fMail:"Email",fPhone:"Phone",fNeed:"Service of interest",fMsg:"Message",
-  submit:"Send enquiry",submitDone:"Enquiry sent ✓",
-  footBlurb:"Consultancy specialised in sustainable solutions for companies, municipalities and individuals.",
-  cert:"RNCEA certified",footNote:"Sustainable web design",
-  stats:[["10","Service lines"],["RNCEA","Active registry"],["48 h","Enquiry response"],["LEED","Award-winning project"]]}
+
+const RISKS = [
+  ["01","Riesgo regulatorio","Multas, observaciones, demoras administrativas y posibles clausuras."],
+  ["02","Riesgo operativo","Una anomalía ambiental detectada tarde se transforma en un problema operativo y económico."],
+  ["03","Riesgo territorial","Un proyecto técnicamente viable puede fracasar si no comprende el territorio donde se inserta."],
+  ["04","Riesgo social","Los conflictos comunitarios pueden retrasar o impedir proyectos."],
+  ["05","Riesgo reputacional","La sostenibilidad exige hoy evidencia y métricas verificables."]
+];
+
+const GEB = [
+  {code:"Capa 01 · Geosfera",name:"GEOSFERA",sub:"Viabilidad y cimientos",
+   q:"¿Puedo construir, operar o ampliar acá?",
+   items:["Normativa","Uso del suelo","Geomorfología","Hidrología","Riesgo hídrico","Bosque nativo","Áreas protegidas","Infraestructura","Antecedentes territoriales"],
+   tools:["QGIS","IDECOR","Google Earth Engine","Copernicus Sentinel","Imágenes históricas","Perfiles de elevación","HEC-RAS"],
+   deliverables:["Informe de Línea de Base Ambiental","Mapa de Sensibilidad Territorial","Avisos de Proyecto cuando corresponda"]},
+  {code:"Capa 02 · Ecosfera",name:"ECOSFERA",sub:"Evaluación y licenciamiento",
+   q:"¿Cómo demostramos técnicamente la viabilidad ambiental del proyecto?",
+   items:["Estudios de Impacto Ambiental","Evaluación de impactos","Análisis multicriterio","Modelado ambiental","Dispersión de contaminantes","Cartografía de peligrosidad","Gestión de expediente","Audiencia pública"],
+   tools:["Matriz Conesa Fernández-Vitora","Matriz de Leopold","Batelle Columbus","Vensim","Herramientas SIG"],
+   deliverables:["Estudio de Impacto Ambiental (EsIA)","Plan de Gestión Ambiental","Documentación técnica","Acompañamiento ante la autoridad competente"]},
+  {code:"Capa 03 · Biosfera",name:"BIOSFERA",sub:"Gestión continua y mejora",
+   q:"¿Cómo demostramos cumplimiento y detectamos problemas antes de que escalen?",
+   items:["Monitoreo IoT","Calidad del aire","Agua","Suelo","Biomonitorización","Auditorías","Protocolos de muestreo","Cadena de custodia","Planes de contingencia","Dashboards"],
+   tools:["Estación Zeleni","QGIS","Dashboard OaaS","Apoyo a ISO 14001"],
+   deliverables:["Plan de Gestión Ambiental vivo","Plan de Contingencias","Informes de Auditoría","Reportes periódicos","Dashboard ambiental"]}
+];
+
+const PIPELINE = [
+  "Sensores","Datalogging","GPS + tiempo","Base de datos","SIG","Análisis espacial","Diagnóstico territorial","Decisión"
+];
+
+const SENSORS = [
+  {name:"SCD30",kind:"Medición",vars:["CO₂","Temperatura","Humedad relativa"],note:"Sensor NDIR para dióxido de carbono con compensación térmica e higrométrica."},
+  {name:"BME680",kind:"Medición + BSEC",vars:["Temperatura","Humedad","Presión","Resistencia de gases"],note:"Su salida se procesa con el algoritmo Bosch BSEC, que entrega el Índice de Calidad del Aire (IAQ)."},
+  {name:"PMS5003",kind:"Dispersión láser",vars:["PM1.0","PM2.5","PM10"],note:"Conteo óptico de material particulado por dispersión láser."},
+  {name:"MiCS-4514",kind:"Estimación MOS",vars:["CO","NO₂"],note:"Sensor de óxido metálico para estimación de gases a partir de variación de resistencia."},
+  {name:"MQ-135",kind:"Estimación MOS",vars:["NH₃","Alcohol","VOC"],note:"Sensor semiconductor con respuesta frente a distintos gases y compuestos del aire."},
+  {name:"GPS",kind:"Georreferenciación",vars:["Latitud","Longitud","Timestamp"],note:"Asocia posición y momento a cada medición, habilitando el análisis espacial."}
+];
+
+const CALIB = [
+  ["01","Aire de referencia","Exposición del sensor a condiciones de aire limpio controladas."],
+  ["02","Determinación R0","Se fija la resistencia de línea base del material sensor."],
+  ["03","Lectura Rs","Registro de la resistencia instantánea durante la campaña."],
+  ["04","Relación Rs/R0","Normalización de la lectura respecto de la línea base."],
+  ["05","Curva de regresión","Curvas potenciales empíricas embebidas en el firmware."],
+  ["06","Estimación ppm","Valor relativo expresado en partes por millón, declarado como estimación."]
+];
+
+const RIGOR = ["Medición","Estimación","Indicador","Monitoreo exploratorio","Evidencia complementaria"];
+
+const VARIABLES = [
+  ["Temperatura","°C","Condiciones térmicas ambientales.","Medición · SCD30 / BME680"],
+  ["Humedad","%HR","Seguimiento de las condiciones higrométricas.","Medición · SCD30 / BME680"],
+  ["Presión","hPa","Caracterización de condiciones meteorológicas locales.","Medición · BME680"],
+  ["CO₂","ppm","Dióxido de carbono por sensor NDIR.","Medición · SCD30"],
+  ["CO","ppm~","Monóxido de carbono estimado por curva empírica.","Estimación · MOS"],
+  ["NO₂","ppm~","Dióxido de nitrógeno estimado por curva empírica.","Estimación · MOS"],
+  ["NH₃","ppm~","Amoníaco estimado por curva empírica.","Estimación · MOS"],
+  ["VOC","ppm~","Compuestos orgánicos volátiles equivalentes.","Estimación · BME680"],
+  ["PM1.0","µg/m³","Fracción fina de material particulado.","Medición · PMS5003"],
+  ["PM2.5","µg/m³","Fracción respirable de material particulado.","Medición · PMS5003"],
+  ["PM10","µg/m³","Material particulado grueso.","Medición · PMS5003"],
+  ["IAQ","0–500","Índice de Calidad del Aire procesado mediante BSEC.","Índice · BSEC"]
+];
+
+const SCHEMA = [
+  ["timestamp","datetime"],["latitude","float"],["longitude","float"],["temperature","float"],
+  ["humidity","float"],["pressure","float"],["CO2","int"],["CO","float~"],["NO2","float~"],
+  ["NH3","float~"],["VOC","float~"],["PM1","int"],["PM2_5","int"],["PM10","int"],["IAQ","int"]
+];
+
+const GIS_OPS = ["Cartografía temática","Mapas de concentración","Análisis temporal","Análisis espacial","Interpolaciones","Identificación de hotspots","Comparación entre sectores","Análisis de proximidad","Cruces topológicos"];
+const CROSS = ["Calles","Industrias","Tránsito","Usos del suelo","Vegetación","Escuelas","Cursos de agua","Infraestructura","Densidad urbana","Barrios","Equipamientos","Variables socioambientales"];
+const OAAS_KPI = ["NO₂","PM2.5","PM10","Temperatura","IAQ","NDVI","Cobertura vegetal","Islas de calor","Calidad de agua","Indicadores territoriales"];
+const OAAS_FEAT = ["Mapas","Series temporales","Comparación de zonas","Filtros","Alertas","Exportación de datos","Reportes"];
+
+const PRODUCTS = [
+  ["Hardware","Estación Zeleni Aire","Nodo portátil para monitoreo atmosférico y generación de datos georreferenciados."],
+  ["Hardware","Estación Zeleni Agua","Sistema multiparamétrico para monitoreo de cuerpos receptores y efluentes."],
+  ["Hardware","Estación Zeleni Suelo","Monitoreo de humedad, conductividad, temperatura y variables de diagnóstico de suelo."],
+  ["Educativo","Kit Aula Viva","Versión educativa y simplificada del sistema de monitoreo, para escuelas, STEAM y ciencia ciudadana."]
+];
+
+const PLANS = [
+  {code:"Plan Geosfera",name:"Preinversión y viabilidad",sub:"Antes de comprar, ampliar o relocalizar: saber si el territorio lo permite.",
+   listTitle:"Para",items:["Nuevos terrenos","Ampliaciones","Relocalizaciones","Nuevas plantas"],model:"Por proyecto"},
+  {code:"Plan Ecosfera",name:"Licenciamiento ambiental",sub:"Construimos y defendemos técnicamente el expediente ambiental del proyecto.",
+   listTitle:"Para",items:["Estudios de Impacto Ambiental","Declaraciones de Impacto Ambiental","Expedientes","Audiencias públicas","Habilitaciones"],model:"Por proyecto"},
+  {code:"Plan Biosfera",name:"Gestión ambiental continua",sub:"Responsable Ambiental Externo con monitoreo, reportes y presencia ante inspecciones.",
+   listTitle:"Incluye",items:["Monitoreo","Auditorías","Gestión ambiental","Reportes","Contingencias","Capacitación","Acompañamiento ante inspecciones"],model:"Abono mensual"}
+];
+
+const VALUE_CHIPS = ["Disminuir riesgos","Anticipar problemas","Mejorar decisiones","Generar evidencia","Continuidad operativa","Licencia social","Reputación","Estándares y certificaciones"];
+
+const CYCLE = [
+  ["01","Diagnóstico espacial","Lectura territorial del problema con cartografía y datos disponibles."],
+  ["02","Monitoreo tecnológico","Despliegue de sensores y campañas de medición georreferenciadas."],
+  ["03","Validación científica","Procesamiento, control de calidad e interpretación de los datos."],
+  ["04","Restauración socioterritorial","Intervenciones basadas en la naturaleza definidas con la comunidad."]
+];
+
+const AULA = ["Islas de calor","Cobertura arbórea","Monitoreo atmosférico","Huertas agroecológicas","Hoteles de insectos","Reforestación con nativas"];
+const RSE = ["Escuelas alcanzadas","Estudiantes participantes","Sensores desplegados","Árboles plantados","Superficie intervenida","Indicadores ambientales","Estimación de captura de CO₂"];
+
+const VALIDATIONS = [
+  ["Ministerio de Educación · Córdoba","Declaración de Interés Educativo por el Ministerio de Educación de la Provincia de Córdoba."],
+  ["Concejo Deliberante · Córdoba","Declaración de Interés por el Concejo Deliberante de la Ciudad de Córdoba."],
+  ["Incubadora UNC","Empresa en incubación en la Incubadora de Empresas de la Universidad Nacional de Córdoba."],
+  ["Caso territorial","Corredor Verde de Monte Buey como caso de aplicación territorial."]
+];
+
+const MONTE_BUEY = [
+  ["01","El problema territorial","Un ejido con fuerte presión agrícola y escasa infraestructura verde: falta de conectividad ecológica y de espacios de amortiguación entre el área urbana y la producción."],
+  ["02","Diagnóstico espacial","Lectura cartográfica del ejido, identificación de bordes, corredores potenciales y áreas críticas mediante SIG."],
+  ["03","Análisis NDVI","Evaluación de cobertura vegetal con imágenes satelitales para priorizar sectores de intervención."],
+  ["04","Diseño del corredor","Propuesta de Corredor Verde con especies nativas, funciones ecológicas y usos sociales definidos por tramo."],
+  ["05","Participación comunitaria","Talleres con vecinos, escuelas e instituciones para validar el diseño y apropiarlo localmente."],
+  ["06","Presupuesto participativo","La propuesta se canalizó como proyecto elegible, con su presupuesto discutido públicamente."],
+  ["07","Resultado","Un instrumento territorial concreto que articula evidencia científica, decisión pública y apropiación comunitaria."]
+];
+
+const STAGES = ["Idea o prefactibilidad","Compra de terreno o relocalización","Licenciamiento / EsIA en curso","Planta en operación","Inspección u observación recibida"];
+const DIAG_FACTS = ["30 minutos","Sin costo","Sin compromiso"];
+const DIAG_INCLUDES = ["Revisión del encuadre normativo aplicable","Identificación de riesgos territoriales visibles","Definición del alcance técnico necesario","Próximos pasos por escrito"];
+
+const BLIPS = [
+  {x:"22%",y:"31%",s:"9px",c:"#2FB6A8",d:"2.8s"},
+  {x:"48%",y:"22%",s:"7px",c:"#57B487",d:"3.6s"},
+  {x:"63%",y:"52%",s:"12px",c:"#D8B072",d:"2.2s"},
+  {x:"34%",y:"66%",s:"8px",c:"#2FB6A8",d:"3.1s"},
+  {x:"77%",y:"37%",s:"7px",c:"#57B487",d:"2.6s"},
+  {x:"18%",y:"78%",s:"6px",c:"#2FB6A8",d:"3.9s"},
+  {x:"58%",y:"79%",s:"10px",c:"#D8B072",d:"2.4s"}
+];
+
+const EN = {
+  "Gestión ambiental y territorial":"Environmental & territorial management",
+  "Inicio":"Home","Método GEB":"GEB Method","Tecnología":"Technology","Estación":"Station",
+  "Inteligencia territorial":"Territorial intelligence","Servicios":"Services",
+  "Biosfera Urbana":"Urban Biosphere","Casos":"Cases","Contacto":"Contact",
+  "GEB":"GEB","Territorio ":"Territory ","Biosfera":"Biosphere",
+  "Diagnóstico express":"Express diagnosis",
+  "Environmental intelligence · Córdoba, AR":"Environmental intelligence · Córdoba, AR",
+  "Inteligencia territorial para decisiones ambientales que no pueden fallar.":"Territorial intelligence for environmental decisions that cannot fail.",
+  "Integramos ciencia ambiental, análisis territorial, monitoreo IoT y participación comunitaria para acompañar proyectos desde su viabilidad inicial hasta su operación y mejora continua.":"We combine environmental science, territorial analysis, IoT monitoring and community participation to support projects from initial feasibility through operation and continuous improvement.",
+  "Solicitar Diagnóstico Territorial":"Request a Territorial Diagnosis",
+  "Conocer el Método GEB":"Explore the GEB Method",
+  "Ciencia":"Science","Territorio":"Territory","Tecnología ":"Technology ",
+  "Metodologías reconocidas, trazabilidad documental y criterio técnico verificable.":"Recognised methodologies, documentary traceability and verifiable technical judgement.",
+  "Cartografía, SIG y lectura del lugar donde el proyecto realmente se inserta.":"Cartography, GIS and a reading of the place where the project is actually located.",
+  "Sensores propios, datalogging georreferenciado y visualización de datos.":"In-house sensors, georeferenced datalogging and data visualisation.",
+  "El ambiente dejó de ser solamente un expediente.":"The environment is no longer just a filing.",
+  "Cinco riesgos que hoy corren en paralelo en cualquier proyecto industrial o municipal.":"Five risks that now run in parallel in any industrial or municipal project.",
+  "Riesgo regulatorio":"Regulatory risk","Riesgo operativo":"Operational risk",
+  "Riesgo territorial":"Territorial risk","Riesgo social":"Social risk","Riesgo reputacional":"Reputational risk",
+  "Multas, observaciones, demoras administrativas y posibles clausuras.":"Fines, formal observations, administrative delays and possible shutdowns.",
+  "Una anomalía ambiental detectada tarde se transforma en un problema operativo y económico.":"An environmental anomaly detected late becomes an operational and economic problem.",
+  "Un proyecto técnicamente viable puede fracasar si no comprende el territorio donde se inserta.":"A technically viable project can fail if it does not understand the territory it sits in.",
+  "Los conflictos comunitarios pueden retrasar o impedir proyectos.":"Community conflict can delay or block projects.",
+  "La sostenibilidad exige hoy evidencia y métricas verificables.":"Sustainability now demands evidence and verifiable metrics.",
+  "Transformamos datos ambientales y territoriales en información útil para decidir antes de que el problema aparezca.":"We turn environmental and territorial data into information that lets you decide before the problem appears.",
+  "Método Zeleni GEB":"Zeleni GEB Method",
+  "Un método. Tres capas. Una misma inteligencia territorial.":"One method. Three layers. One territorial intelligence.",
+  "GEOSFERA, ECOSFERA y BIOSFERA comparten información territorial, cartografía, datos, monitoreo y conocimiento acumulado. No son etapas aisladas: son capas de un mismo sistema.":"GEOSPHERE, ECOSPHERE and BIOSPHERE share territorial information, cartography, data, monitoring and accumulated knowledge. They are not isolated stages: they are layers of one system.",
+  "Capa 01 · Geosfera":"Layer 01 · Geosphere","Capa 02 · Ecosfera":"Layer 02 · Ecosphere","Capa 03 · Biosfera":"Layer 03 · Biosphere",
+  "Viabilidad y cimientos":"Feasibility and foundations","Evaluación y licenciamiento":"Assessment and licensing","Gestión continua y mejora":"Continuous management and improvement",
+  "¿Puedo construir, operar o ampliar acá?":"Can I build, operate or expand here?",
+  "¿Cómo demostramos técnicamente la viabilidad ambiental del proyecto?":"How do we technically demonstrate the project's environmental viability?",
+  "¿Cómo demostramos cumplimiento y detectamos problemas antes de que escalen?":"How do we prove compliance and catch problems before they escalate?",
+  "Qué analizamos":"What we analyse","Herramientas y metodologías":"Tools and methodologies","Entregables":"Deliverables",
+  "Cada capa tiene su plan de trabajo asociado":"Each layer has its own work plan",
+  "Tecnología Zeleni":"Zeleni Technology","Del sensor al territorio":"From sensor to territory",
+  "Medimos el ambiente, georreferenciamos cada observación y transformamos las mediciones en información territorial.":"We measure the environment, georeference every observation and turn measurements into territorial information.",
+  "Ver arquitectura de sensores →":"See sensor architecture →",
+  "Sensores":"Sensors","Datalogging":"Datalogging","GPS + tiempo":"GPS + time","Base de datos":"Database",
+  "Análisis espacial":"Spatial analysis","Diagnóstico territorial":"Territorial diagnosis","Decisión":"Decision",
+  "Estación de monitoreo":"Monitoring station",
+  "Un nodo portátil de monitoreo ambiental georreferenciado":"A portable georeferenced environmental monitoring node",
+  "Nodo portátil de monitoreo ambiental georreferenciado":"Portable georeferenced environmental monitoring node",
+  "Arquitectura de sensores de bajo costo con alta resolución espacio-temporal: variables termodinámicas, material particulado, gases y georreferenciación continua de cada lectura.":"A low-cost sensor architecture with high spatio-temporal resolution: thermodynamic variables, particulate matter, gases and continuous georeferencing of every reading.",
+  "Ver la estación en detalle":"See the station in detail",
+  "Validaciones institucionales":"Institutional endorsements","Ver caso Monte Buey →":"See the Monte Buey case →",
+  "Recurso descargable":"Downloadable resource",
+  "¿Tu Estudio de Impacto Ambiental puede ser observado?":"Could your Environmental Impact Study be rejected?",
+  "Descargá gratis: los 10 errores críticos que frenan la aprobación de un Estudio de Impacto Ambiental.":"Download free: the 10 critical mistakes that stall approval of an Environmental Impact Study.",
+  "Descargar checklist":"Download checklist","Te lo enviamos ✓":"Sent to you ✓",
+  "Arquitectura de sensores":"Sensor architecture","Medición":"Measurement","Estimación":"Estimate",
+  "Medición + BSEC":"Measurement + BSEC","Dispersión láser":"Laser scattering","Estimación MOS":"MOS estimate","Georreferenciación":"Georeferencing",
+  "Sensores de bajo costo, metodología controlada":"Low-cost sensors, controlled methodology",
+  "Rigor técnico":"Technical rigour",
+  "Las estimaciones provenientes de sensores MOS no son equivalentes a instrumental regulatorio certificado. Distinguimos explícitamente entre medición instrumental, estimación, indicador, monitoreo exploratorio y evidencia complementaria.":"Estimates from MOS sensors are not equivalent to certified regulatory instrumentation. We explicitly distinguish instrumental measurement, estimate, indicator, exploratory monitoring and complementary evidence.",
+  "Indicador":"Indicator","Monitoreo exploratorio":"Exploratory monitoring","Evidencia complementaria":"Complementary evidence",
+  "Cadena de calibración":"Calibration chain",
+  "Aire de referencia":"Reference air","Determinación R0":"R0 determination","Lectura Rs":"Rs reading",
+  "Relación Rs/R0":"Rs/R0 ratio","Curva de regresión":"Regression curve","Estimación ppm":"ppm estimate",
+  "Procesamiento en tiempo real e Índice de Calidad del Aire":"Real-time processing and Air Quality Index",
+  "Variables monitoreadas":"Monitored variables",
+  "12 parámetros · registro georreferenciado":"12 parameters · georeferenced logging",
+  "Cada medición tiene un lugar y un momento.":"Every measurement has a place and a time.",
+  "Registro · esquema de datalogging":"Record · datalogging schema",
+  "Matriz exportable a CSV e importable en QGIS como capa de puntos.":"Matrix exportable to CSV and importable into QGIS as a point layer.",
+  "Alta resolución espacio-temporal":"High spatio-temporal resolution",
+  "Campañas itinerantes en lugar de un único punto fijo":"Roaming campaigns instead of a single fixed point",
+  "Inteligencia territorial · SIG":"Territorial intelligence · GIS",
+  "Un sensor aislado genera números. Una red georreferenciada genera inteligencia territorial.":"An isolated sensor produces numbers. A georeferenced network produces territorial intelligence.",
+  "Análisis SIG":"GIS analysis","Cruzamos las mediciones con":"We cross the measurements with",
+  "El objetivo es transformar mediciones puntuales en diagnósticos socioambientales territorialmente contextualizados.":"The goal is to turn point measurements into socio-environmental diagnoses with territorial context.",
+  "Observatorio como servicio · OaaS":"Observatory as a Service · OaaS",
+  "Un observatorio ambiental para tu territorio, por suscripción":"An environmental observatory for your territory, by subscription",
+  "Suscripción anual · SaaS":"Annual subscription · SaaS",
+  "Vista de mapa · maqueta":"Map view · mock-up","Ilustrativo":"Illustrative",
+  "Córdoba · capa de puntos georreferenciados":"Córdoba · georeferenced point layer",
+  "Indicadores potenciales":"Potential indicators","El dashboard permite":"The dashboard supports",
+  "Mapas":"Maps","Series temporales":"Time series","Comparación de zonas":"Zone comparison","Filtros":"Filters",
+  "Alertas":"Alerts","Exportación de datos":"Data export","Reportes":"Reports",
+  "Productos Zeleni":"Zeleni Products","Hardware":"Hardware","Educativo":"Educational",
+  "Tres planes, una misma capa de datos":"Three plans, one shared data layer",
+  "La sostenibilidad que sí es rentable: reducí riesgos y costos operativos y mejorá tu posicionamiento con soluciones ambientales basadas en datos.":"Sustainability that actually pays: cut risk and operating costs and improve your positioning with data-driven environmental solutions.",
+  "Plan Geosfera":"Geosphere Plan","Plan Ecosfera":"Ecosphere Plan","Plan Biosfera":"Biosphere Plan",
+  "Preinversión y viabilidad":"Pre-investment and feasibility","Licenciamiento ambiental":"Environmental licensing","Gestión ambiental continua":"Continuous environmental management",
+  "Para":"For","Incluye":"Includes","Por proyecto":"Per project","Abono mensual":"Monthly retainer","Consultar plan":"Enquire about this plan",
+  "Vendemos a la industria certeza técnica, continuidad operativa y reputación territorial, con tecnología propia y respaldo social verificable.":"We sell industry technical certainty, operational continuity and territorial reputation, with in-house technology and verifiable social backing.",
+  "Red Biosfera Urbana":"Urban Biosphere Network",
+  "Innovación social y educación ambiental con datos":"Social innovation and environmental education with data",
+  "Transformamos estudiantes y comunidades en actores activos de la construcción de conocimiento ambiental territorial.":"We turn students and communities into active builders of territorial environmental knowledge.",
+  "Diagnóstico espacial":"Spatial diagnosis","Monitoreo tecnológico":"Technological monitoring",
+  "Validación científica":"Scientific validation","Restauración socioterritorial":"Socio-territorial restoration",
+  "Aula Viva":"Living Classroom","Del aula al territorio":"From the classroom to the territory",
+  "Los estudiantes miden variables ambientales, interpretan datos, mapean problemas, formulan hipótesis, contrastan resultados y desarrollan intervenciones ambientales en su propio entorno.":"Students measure environmental variables, interpret data, map problems, form hypotheses, test results and develop environmental interventions in their own surroundings.",
+  "RSE · Padrinazgo empresarial":"CSR · Corporate sponsorship",
+  "Red Biosfera Urbana para empresas":"Urban Biosphere Network for companies",
+  "Una empresa puede apadrinar proyectos educativos y ambientales, con impacto medible y reportes verificables.":"A company can sponsor educational and environmental projects, with measurable impact and verifiable reporting.",
+  "Métricas potenciales":"Potential metrics",
+  "Casos de aplicación":"Applied cases","Corredor Verde de Monte Buey":"Monte Buey Green Corridor",
+  "Ciencia, territorio y participación en un mismo proceso: del diagnóstico espacial al presupuesto participativo.":"Science, territory and participation in one process: from spatial diagnosis to participatory budgeting.",
+  "Ciencia + territorio + participación":"Science + territory + participation",
+  "Diagnóstico Territorial Express":"Express Territorial Diagnosis",
+  "¿Necesitás saber qué está pasando ambientalmente en tu territorio?":"Do you need to know what is happening environmentally in your territory?",
+  "30 minutos":"30 minutes","Sin costo":"No cost","Sin compromiso":"No commitment",
+  "Qué incluye el diagnóstico":"What the diagnosis includes",
+  "Agendar diagnóstico":"Book the diagnosis","Solicitud enviada ✓":"Request sent ✓",
+  "Contanos qué proyecto tenés entre manos y en qué etapa está.":"Tell us what project you have in hand and what stage it is at.",
+  "Nombre":"Name","Empresa u organismo":"Company or public body","Email":"Email",
+  "Etapa del proyecto":"Project stage","Qué necesitás resolver":"What you need to solve",
+  "Base":"Based in","Nota técnica · ":"Technical note · ",
+  "Ecosistema integrado de gestión territorial y ambiental: diagnóstico técnico, ejecución territorial y apropiación comunitaria mediante inteligencia territorial.":"An integrated territorial and environmental management ecosystem: technical diagnosis, territorial execution and community ownership through territorial intelligence.",
+  "Los sensores de bajo costo generan estimaciones e indicadores de monitoreo exploratorio. No sustituyen instrumental regulatorio certificado.":"Low-cost sensors produce estimates and exploratory monitoring indicators. They do not replace certified regulatory instrumentation.",
+  "© 2026 ZELENI SVET · Gestión ambiental y territorial":"© 2026 ZELENI SVET · Environmental & territorial management",
+  "Datos + territorio + tecnología + ciencia + comunidad":"Data + territory + technology + science + community",
+  "Precisión 0–3":"Accuracy 0–3","Estabilizando":"Stabilising",
+  "Excelente":"Excellent","Moderado":"Moderate","Deficiente":"Poor",
+  "Lectura ilustrativa del firmware. El IAQ es un índice procesado, no una medición regulatoria.":"Illustrative firmware reading. IAQ is a processed index, not a regulatory measurement."
 };
 
-var lang='es', sent=false;
-function pad(n){return n<10?'0'+n:''+n}
-function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e}
+const CREDENTIALS = ["Registro RNCEA","Ley Provincial 10.208","LEED · Certificación de edificios","Incubadora UNC"];
 
-function render(){
-  var t=COPY[lang];
-  document.documentElement.lang=lang;
-  document.querySelectorAll('[data-i18n]').forEach(function(n){var k=n.getAttribute('data-i18n');if(t[k])n.textContent=t[k]});
-  document.getElementById('bes').className=lang==='es'?'on':'';
-  document.getElementById('ben').className=lang==='en'?'on':'';
+const CLASSIC_SERVICES = [
+  ["Asesoramiento Sostenible","Guía experta para implementar prácticas empresariales ecológicas y responsables, asegurando el cumplimiento normativo."],
+  ["Tecnologías Verdes","Implementación de soluciones innovadoras y eficientes para reducir el impacto ambiental."],
+  ["Formación y Talleres","Capacitación a tu equipo en temas clave de sostenibilidad y gestión ambiental."],
+  ["Aviso de Proyecto y Estudio de Impacto Ambiental (EsIA)","Gestión de la documentación y realización de los estudios necesarios para la aprobación legal de tus proyectos."],
+  ["Auditoría Ambiental","Evaluación detallada del cumplimiento normativo y del desempeño ambiental de tus operaciones y procesos."],
+  ["Plan de Gestión Ambiental (PGA)","Diseño e implementación de estrategias para mitigar impactos, optimizar recursos y mejorar continuamente tu gestión ecológica."],
+  ["Monitoreo","Medición y seguimiento constante de indicadores ambientales clave —agua, aire, residuos— para asegurar el control y cumplimiento."],
+  ["Soluciones Basadas en la Naturaleza (SbN)","Acciones inspiradas y apoyadas por la naturaleza, como techos verdes o jardines verticales, para abordar desafíos sociales y ambientales."],
+  ["Dispositivos de Educación Ambiental","Creación e instalación de herramientas y materiales interactivos para promover la conciencia y la acción sostenible en espacios públicos o privados."],
+  ["Observatorio Urbano / Diagnóstico","Análisis y recopilación de datos para generar un diagnóstico completo de la sostenibilidad urbana o territorial."]
+];
 
-  var s=document.getElementById('stats');s.innerHTML='';
-  t.stats.forEach(function(x){s.appendChild(el('div',null,'<b>'+x[0]+'</b><span>'+x[1]+'</span>'))});
+const CLASSIC_PROJECTS = [
+  ["https://millocba.github.io/zelenisvet/assets/img/imagen3.jpeg","Auditoría ambiental","Análisis y ensayos de calidad"],
+  ["https://millocba.github.io/zelenisvet/assets/img/imagen2.jpeg","Monitoreo","Monitoreo ambiental en campo"],
+  ["https://millocba.github.io/zelenisvet/assets/img/imagen1.jpeg","Formación y talleres","Capacitación en gestión ambiental"],
+  ["https://millocba.github.io/zelenisvet/assets/img/imagen4.jpeg","SbN","Diseño biofílico y jardín vertical"]
+];
 
-  var tr=document.getElementById('trust');tr.innerHTML='';
-  t.trust.forEach(function(x){tr.appendChild(el('em',null,x))});
+class Component extends DCLogic {
+  state = {screen:"home", layer:0, sent:false, lead:false, lang:"es", reason:"Diagnóstico Territorial Express"};
 
-  var st=document.getElementById('steps');st.innerHTML='';
-  t.steps.forEach(function(x){st.appendChild(el('li',null,'<span class="n">'+x[0]+'</span><span><strong>'+x[1]+'</strong><p>'+x[2]+'</p></span>'))});
+  componentDidMount(){
+    const self = this;
+    this._sweep = function(){ self.sweep(); };
+    document.addEventListener("scroll", this._sweep, {capture:true, passive:true});
+    window.addEventListener("resize", this._sweep, {passive:true});
+    this._orig = new Map();
+    this.observe();
+    this.applyLang();
+  }
+  componentDidUpdate(){ this.observe(); this.applyLang(); }
 
-  var sv=document.getElementById('services');sv.innerHTML='';
-  SERVICES.forEach(function(x,i){
-    var d=x[lang],row=el('div','acc'+(i===0?' open':''));
-    row.innerHTML='<button type="button"><span class="n">'+pad(i+1)+'</span><span class="t"><strong>'+d[0]+'</strong>'+
-      '<span class="body"><p>'+d[1]+'</p><span class="tags">'+d[2].map(function(g){return '<span>'+g+'</span>'}).join('')+'</span></span></span>'+
-      '<span class="plus">+</span></button>';
-    row.querySelector('button').onclick=function(){
-      var wasOpen=row.classList.contains('open');
-      document.querySelectorAll('.acc.open').forEach(function(o){o.classList.remove('open')});
-      if(!wasOpen)row.classList.add('open');
+  applyLang(){
+    const en = this.state.lang === "en";
+    const orig = this._orig || (this._orig = new Map());
+    const root = document.body;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+    const nodes = [];
+    let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+    nodes.forEach(function(node){
+      const cur = node.nodeValue;
+      if (!cur || !cur.trim()) return;
+      if (en) {
+        const key = orig.has(node) ? orig.get(node) : cur;
+        const t = EN[key.trim()];
+        if (t) { if (!orig.has(node)) orig.set(node, cur); node.nodeValue = cur.replace(key.trim(), t); }
+      } else if (orig.has(node)) {
+        node.nodeValue = orig.get(node);
+        orig.delete(node);
+      }
+    });
+    document.querySelectorAll("[placeholder]").forEach(function(el){
+      const ph = el.getAttribute("placeholder");
+      if (!ph) return;
+      if (en) {
+        const t = EN[ph];
+        if (t) { el.setAttribute("data-ph-es", ph); el.setAttribute("placeholder", t); }
+      } else if (el.hasAttribute("data-ph-es")) {
+        el.setAttribute("placeholder", el.getAttribute("data-ph-es"));
+        el.removeAttribute("data-ph-es");
+      }
+    });
+  }
+  componentWillUnmount(){
+    document.removeEventListener("scroll", this._sweep, {capture:true});
+    window.removeEventListener("resize", this._sweep);
+  }
+
+  sweep(){
+    const vh = window.innerHeight || 800;
+    document.querySelectorAll("[data-reveal]:not(.in)").forEach(function(el){
+      const r = el.getBoundingClientRect();
+      if (r.top < vh * 0.94) el.classList.add("in");
+    });
+  }
+
+  observe(){
+    if (this.props.motion === false) {
+      document.querySelectorAll("[data-reveal]").forEach(function(el){ el.classList.add("in"); });
+      return;
+    }
+    const self = this;
+    this.sweep();
+    requestAnimationFrame(function(){ self.sweep(); });
+  }
+
+  nav(screen){ const self = this; return function(e){ e.preventDefault(); self.setState({screen:screen}); window.scrollTo(0,0); }; }
+
+  renderVals(){
+    const self = this;
+    const s = this.state.screen;
+    const accent = this.props.accent || "#2FB6A8";
+    const li = this.state.layer;
+    const layer = GEB[li];
+    const iaq = this.props.iaqDemo != null ? this.props.iaqDemo : 50;
+
+    const lang = this.state.lang;
+    return {
+      accent: accent,
+      ctaLabel: "Diagnóstico express",
+      setEs: function(e){ e.preventDefault(); self.setState({lang:"es"}); },
+      setEn: function(e){ e.preventDefault(); self.setState({lang:"en"}); },
+      esBg: lang === "es" ? "rgba(47,182,168,.22)" : "transparent",
+      esBorder: lang === "es" ? accent : "rgba(233,238,235,.2)",
+      esOp: lang === "es" ? 1 : .55,
+      enBg: lang === "en" ? "rgba(47,182,168,.22)" : "transparent",
+      enBorder: lang === "en" ? accent : "rgba(233,238,235,.2)",
+      enOp: lang === "en" ? 1 : .55,
+      menu: MENU.map(function(m){
+        return {label:m[1], go:self.nav(m[0]),
+          color: s === m[0] ? "#E9EEEB" : "#9BAAA2",
+          bg: s === m[0] ? "rgba(47,182,168,.16)" : "transparent"};
+      }),
+      isHome: s === "home", isGeb: s === "geb", isTech: s === "tech", isStation: s === "station",
+      isTerr: s === "terr", isServices: s === "services", isBio: s === "bio",
+      isCases: s === "cases", isContact: s === "contact",
+      goHome: this.nav("home"), goGeb: this.nav("geb"), goTech: this.nav("tech"),
+      goStation: this.nav("station"), goServices: this.nav("services"),
+      goCases: this.nav("cases"), goContact: this.nav("contact"),
+
+      triad: TRIAD,
+      risks: RISKS.map(function(r){ return {n:r[0], t:r[1], d:r[2]}; }),
+      geb: GEB.map(function(g){ return {code:g.code, name:g.name, sub:g.sub, q:g.q}; }),
+      gebTabs: GEB.map(function(g, i){
+        return {name:g.name, pick:function(e){ e.preventDefault(); self.setState({layer:i}); },
+          bg: i === li ? "rgba(47,182,168,.16)" : "transparent",
+          border: i === li ? "rgba(47,182,168,.55)" : "rgba(233,238,235,.2)",
+          fg: i === li ? "#E9EEEB" : "#9BAAA2"};
+      }),
+      layer: layer,
+      pipeline: PIPELINE.map(function(p, i){ return {n:"0" + (i+1), t:p}; }),
+      varChips: ["CO₂","PM2.5","PM10","NO₂","CO","NH₃","VOC","IAQ","GPS"],
+      sensors: SENSORS,
+      calib: CALIB.map(function(c){ return {n:c[0], t:c[1], d:c[2]}; }),
+      rigor: RIGOR,
+      variables: VARIABLES.map(function(v){
+        const est = v[3].indexOf("Estimación") === 0;
+        return {name:v[0], unit:v[1], note:v[2], tag:v[3], tagColor: est ? "#D8B072" : accent};
+      }),
+      schema: SCHEMA.map(function(f){ return {k:f[0], t:f[1]}; }),
+      gisOps: GIS_OPS, crossLayers: CROSS, oaasKpis: OAAS_KPI, oaasFeatures: OAAS_FEAT,
+      products: PRODUCTS.map(function(p){ return {tag:p[0], name:p[1], d:p[2]}; }),
+      plans: PLANS, valueChips: VALUE_CHIPS,
+      credentials: CREDENTIALS,
+      classicServices: CLASSIC_SERVICES.map(function(s, i){ return {n:(i < 9 ? "0" : "") + (i+1), t:s[0], d:s[1]}; }),
+      classicProjects: CLASSIC_PROJECTS.map(function(p){ return {img:p[0], kind:p[1], title:p[2], alt:p[2]}; }),
+      cycle: CYCLE.map(function(c){ return {n:c[0], t:c[1], d:c[2]}; }),
+      aulaExamples: AULA, rseMetrics: RSE,
+      validations: VALIDATIONS.map(function(v){ return {k:v[0], t:v[1]}; }),
+      monteBuey: MONTE_BUEY.map(function(m){ return {n:m[0], t:m[1], d:m[2]}; }),
+      stages: STAGES, diagFacts: DIAG_FACTS, diagIncludes: DIAG_INCLUDES,
+      blips: BLIPS,
+      iaq: iaq,
+      iaqPct: Math.max(4, Math.min(100, (iaq / 500) * 100)) + "%",
+      leadLabel: this.state.lead ? "Te lo enviamos ✓" : "Descargar checklist",
+      getLead: function(e){ e.preventDefault(); self.setState({lead:true}); },
+      reasons: ["Diagnóstico Territorial Express","Cotización de un servicio","Licenciamiento ambiental / EsIA","Monitoreo y estación Zeleni","Capacitación o Aula Viva","Padrinazgo RSE","Otra consulta"],
+      pickReason: function(e){ self.setState({reason:e.target.value}); },
+      submitLabel: this.state.sent ? "Consulta enviada ✓" : "Enviar consulta",
+      submit: function(e){ e.preventDefault(); self.setState({sent:true}); }
     };
-    sv.appendChild(row);
-  });
-
-  var pg=document.getElementById('projects');pg.innerHTML='';
-  PROJECTS.forEach(function(p){
-    var d=p[lang],a=el('a','pcard');a.href='#contacto';
-    a.innerHTML='<span class="ph"><img src="'+p.img+'" alt="'+d[0]+'" loading="lazy"></span>'+
-      '<span class="txt"><span class="kind">'+d[1]+'</span><span class="name">'+d[0]+'</span><span class="res">'+d[2]+'</span></span>';
-    pg.appendChild(a);
-  });
-
-  var sel=document.getElementById('servSelect');sel.innerHTML='';
-  SERVICES.forEach(function(x){var o=document.createElement('option');o.textContent=x[lang][0];sel.appendChild(o)});
-
-  var fs=document.getElementById('footServices');fs.innerHTML='';
-  SERVICES.slice(0,5).forEach(function(x){var li=el('li');var a=el('a',null,x[lang][0]);a.href='#servicios';li.appendChild(a);fs.appendChild(li)});
-
-  document.getElementById('submitBtn').textContent=sent?t.submitDone:t.submit;
-  observe();
+  }
 }
-function setLang(l){lang=l;try{localStorage.setItem('zs-lang',l)}catch(e){}render()}
-function sendForm(e){
-  e.preventDefault();
-  var f=e.target,q=[];
-  ['nombre','email','telefono','servicio','mensaje'].forEach(function(k){if(f[k]&&f[k].value)q.push(k+': '+f[k].value)});
-  sent=true;render();
-  window.open('https://wa.me/5493513001702?text='+encodeURIComponent(q.join('\n')),'_blank');
-  return false;
-}
-var io;
-function observe(){
-  if(!io)io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
-  document.querySelectorAll('.reveal:not(.in)').forEach(function(n){io.observe(n)});
-}
-try{var sv=localStorage.getItem('zs-lang');if(sv)lang=sv}catch(e){}
-render();
-document.querySelectorAll('nav.main a').forEach(function(a){a.onclick=function(){document.querySelector('nav.main').classList.remove('open')}});
+
 </script>
 </body>
 </html>

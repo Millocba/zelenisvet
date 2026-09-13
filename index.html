@@ -301,7 +301,7 @@
     <section style="max-width:1340px;margin:0 auto;padding:56px 26px 0">
       <div data-reveal="" style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#7E8D85">Arquitectura de sensores</div>
       <div style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:12px">
-        <sc-for list="{{ sensors }}" as="s" hint-placeholder-count="6">
+        <sc-for list="{{ sensors }}" as="s" hint-placeholder-count="7">
           <div data-reveal="" style="padding:24px 22px 26px;border:1px solid rgba(233,238,235,.14);border-radius:13px;background:rgba(233,238,235,.035);transition:border-color .35s ease,background .35s ease" style-hover="border-color:rgba(47,182,168,.45);background:rgba(47,182,168,.07)">
             <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
               <h3 style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;letter-spacing:.05em">{{ s.name }}</h3>
@@ -401,10 +401,10 @@
     <section style="max-width:1340px;margin:0 auto;padding:64px 26px">
       <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;border-bottom:1px solid rgba(233,238,235,.14);padding-bottom:20px">
         <h2 style="font-size:clamp(22px,2.6vw,34px);font-weight:600;letter-spacing:-.025em">Variables monitoreadas</h2>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#7E8D85">12 parámetros · registro georreferenciado</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#7E8D85">13 parámetros · registro georreferenciado</span>
       </div>
       <div style="margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:11px">
-        <sc-for list="{{ variables }}" as="v" hint-placeholder-count="12">
+        <sc-for list="{{ variables }}" as="v" hint-placeholder-count="13">
           <div data-reveal="" style="padding:20px;border:1px solid rgba(233,238,235,.14);border-radius:12px;background:rgba(233,238,235,.035);transition:border-color .35s ease,background .35s ease" style-hover="border-color:rgba(47,182,168,.45);background:rgba(47,182,168,.07)">
             <div style="display:flex;align-items:baseline;gap:7px">
               <span style="font-size:20px;font-weight:600;letter-spacing:-.01em">{{ v.name }}</span>
@@ -939,6 +939,7 @@ const SENSORS = [
   {name:"PMS5003",kind:"Dispersión láser",vars:["PM1.0","PM2.5","PM10"],note:"Conteo óptico de material particulado por dispersión láser."},
   {name:"MiCS-4514",kind:"Estimación MOS",vars:["CO","NO₂"],note:"Sensor de óxido metálico para estimación de gases a partir de variación de resistencia."},
   {name:"MQ-135",kind:"Estimación MOS",vars:["NH₃","Alcohol","VOC"],note:"Sensor semiconductor con respuesta frente a distintos gases y compuestos del aire."},
+  {name:"NAP-57A",kind:"Medición electroquímica",vars:["CH₄"],note:"Sensor electroquímico de Nemoto & Co. para metano, con calibración de fábrica y respuesta estable en campo."},
   {name:"GPS",kind:"Georreferenciación",vars:["Latitud","Longitud","Timestamp"],note:"Asocia posición y momento a cada medición, habilitando el análisis espacial."}
 ];
 
@@ -961,6 +962,7 @@ const VARIABLES = [
   ["CO","ppm~","Monóxido de carbono estimado por curva empírica.","Estimación · MOS"],
   ["NO₂","ppm~","Dióxido de nitrógeno estimado por curva empírica.","Estimación · MOS"],
   ["NH₃","ppm~","Amoníaco estimado por curva empírica.","Estimación · MOS"],
+  ["CH₄","ppm~","Metano por celda electroquímica.","Medición · NAP-57A"],
   ["VOC","ppm~","Compuestos orgánicos volátiles equivalentes.","Estimación · BME680"],
   ["PM1.0","µg/m³","Fracción fina de material particulado.","Medición · PMS5003"],
   ["PM2.5","µg/m³","Fracción respirable de material particulado.","Medición · PMS5003"],
@@ -971,7 +973,7 @@ const VARIABLES = [
 const SCHEMA = [
   ["timestamp","datetime"],["latitude","float"],["longitude","float"],["temperature","float"],
   ["humidity","float"],["pressure","float"],["CO2","int"],["CO","float~"],["NO2","float~"],
-  ["NH3","float~"],["VOC","float~"],["PM1","int"],["PM2_5","int"],["PM10","int"],["IAQ","int"]
+  ["NH3","float~"],["CH4","float~"],["VOC","float~"],["PM1","int"],["PM2_5","int"],["PM10","int"],["IAQ","int"]
 ];
 
 const GIS_OPS = ["Cartografía temática","Mapas de concentración","Análisis temporal","Análisis espacial","Interpolaciones","Identificación de hotspots","Comparación entre sectores","Análisis de proximidad","Cruces topológicos"];
@@ -1100,7 +1102,7 @@ const EN = {
   "Relación Rs/R0":"Rs/R0 ratio","Curva de regresión":"Regression curve","Estimación ppm":"ppm estimate",
   "Procesamiento en tiempo real e Índice de Calidad del Aire":"Real-time processing and Air Quality Index",
   "Variables monitoreadas":"Monitored variables",
-  "12 parámetros · registro georreferenciado":"12 parameters · georeferenced logging",
+  "13 parámetros · registro georreferenciado":"13 parameters · georeferenced logging",
   "Cada medición tiene un lugar y un momento.":"Every measurement has a place and a time.",
   "Registro · esquema de datalogging":"Record · datalogging schema",
   "Matriz exportable a CSV e importable en QGIS como capa de puntos.":"Matrix exportable to CSV and importable into QGIS as a point layer.",

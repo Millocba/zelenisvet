@@ -52,6 +52,11 @@
           <span style="position:absolute;left:0;top:0;width:44%;height:54%;background:#3C3B6E"></span>
         </a>
       </div>
+      <div style="flex:none;display:flex;gap:6px;align-items:center" title="Paleta de colores" aria-label="Paleta de colores">
+        <sc-for list="{{ palettes }}" as="p">
+          <button onClick="{{ p.pick }}" aria-label="{{ p.name }}" title="{{ p.name }}" style="width:16px;height:16px;border-radius:50%;border:2px solid {{ p.border }};background:{{ p.c }};cursor:pointer;padding:0"></button>
+        </sc-for>
+      </div>
       <a href="#" onClick="{{ goContact }}" style="flex:none;padding:11px 17px;border-radius:8px;background:{{ accent }};color:#05100E;font-size:12.5px;font-weight:600;white-space:nowrap" style-hover="background:#57B487;color:#05100E">{{ ctaLabel }}</a>
     </div>
     <div style="max-width:1340px;margin:0 auto;padding:0 26px 10px">
@@ -820,34 +825,54 @@
   </main>
   </sc-if>
 
-  <footer style="background: #0B1110; border-top: 1px solid rgba(233,238,235,.12); padding-top: 20px; padding-right: 20px; padding-bottom: 10px; padding-left: 20px">
-    <div style="max-width:1340px;margin:0 auto;padding:52px 26px 0;display:flex;flex-wrap:wrap;gap:30px 44px;align-items:center;justify-content:space-between">
-<div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">
-        <span style="display:flex;align-items:center;flex:none;filter:drop-shadow(0 2px 10px rgba(0,0,0,.35))">
-          <img src="https://millocba.github.io/zelenisvet/assets/img/logo1.png" alt="ZELENI SVET Consultora" style="height:60px;width:auto;display:block">
-        </span>
+  <footer style="background:#0B1110;border-top:1px solid rgba(233,238,235,.12)">
+    <div style="max-width:1340px;margin:0 auto;padding:68px 26px 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:46px">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+          <span style="display:flex;align-items:center;flex:none;filter:drop-shadow(0 2px 10px rgba(0,0,0,.35))">
+            <img src="https://millocba.github.io/zelenisvet/assets/img/logo1.png" alt="ZELENI SVET" style="height:54px;width:auto;display:block">
+          </span>
+          <span style="display:flex;flex-direction:column;line-height:1.15">
+            <span style="font-size:14px;font-weight:700;letter-spacing:.14em">ZELENI SVET</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#8B9A92">Gesti&oacute;n ambiental y territorial</span>
+          </span>
+        </div>
+        <p style="max-width:34ch;font-size:13.5px;line-height:1.65;color:#8B9A92;text-wrap:pretty">Ecosistema integrado de gesti&oacute;n territorial y ambiental: diagn&oacute;stico t&eacute;cnico, ejecuci&oacute;n territorial y apropiaci&oacute;n comunitaria mediante inteligencia territorial.</p>
       </div>
-      <p style="flex:1 1 380px;max-width:56ch;font-size:14px;line-height:1.7;color:#8B9A92;text-wrap:pretty">Ecosistema integrado de gestión territorial y ambiental: diagnóstico técnico, ejecución territorial y apropiación comunitaria mediante inteligencia territorial.</p>
-    </div>
-
-    <div style="max-width:1340px;margin:0 auto;padding:26px 26px 0;display:flex;flex-wrap:wrap;gap:8px 26px;align-items:baseline;font-size:14.5px">
-      <a href="mailto:informacion@zelenisvet.com.ar" style="color:#B4C2BA" style-hover="color:{{ accent }}">informacion@zelenisvet.com.ar</a>
-      <a href="https://wa.me/5493513001702" style="color:#B4C2BA" style-hover="color:{{ accent }}">351-3001702 / 351-7533434</a>
-      <span style="color:#8B9A92">Córdoba, Argentina</span>
-      <div style="margin-left:auto;display:flex;flex-direction:column;align-items:center;gap:8px">
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#7E8D85">Certificación RNCEA</span>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#7E8D85">Navegaci&oacute;n</span>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;font-size:14px">
+          <a href="#" onClick="{{ goGeb }}" style="color:#B4C2BA" style-hover="color:{{ accent }}">M&eacute;todo GEB</a>
+          <a href="#" onClick="{{ goServices }}" style="color:#B4C2BA" style-hover="color:{{ accent }}">Servicios</a>
+          <a href="#" onClick="{{ goTech }}" style="color:#B4C2BA" style-hover="color:{{ accent }}">Tecnolog&iacute;a</a>
+          <a href="#" onClick="{{ goStation }}" style="color:#B4C2BA" style-hover="color:{{ accent }}">Estaci&oacute;n</a>
+          <a href="#" onClick="{{ goTerr }}" style="color:#B4C2BA" style-hover="color:{{ accent }}">Territorio</a>
+          <a href="#" onClick="{{ goBio }}" style="color:#B4C2BA" style-hover="color:{{ accent }}">Biosfera</a>
+          <a href="#" onClick="{{ goCases }}" style="color:#B4C2BA" style-hover="color:{{ accent }}">Casos</a>
+          <a href="#" onClick="{{ goContact }}" style="color:#B4C2BA" style-hover="color:{{ accent }}">Contacto</a>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#7E8D85">Contacto</span>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+          <a href="mailto:informacion@zelenisvet.com.ar" style="color:#B4C2BA;word-break:break-word" style-hover="color:{{ accent }}">informacion@zelenisvet.com.ar</a>
+          <a href="https://wa.me/5493513001702" style="color:#B4C2BA" style-hover="color:{{ accent }}">351-3001702 / 351-7533434</a>
+          <span style="color:#8B9A92">C&oacute;rdoba, Argentina</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:16px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#7E8D85">Certificaci&oacute;n RNCEA</span>
         <span style="display:flex;align-items:center;filter:drop-shadow(0 2px 10px rgba(0,0,0,.35))">
-          <img src="https://millocba.github.io/zelenisvet/assets/img/logoCertificado.png" alt="Certificación RNCEA" style="height:54px;width:auto;display:block">
+          <img src="https://millocba.github.io/zelenisvet/assets/img/logoCertificado.png" alt="Certificaci&oacute;n RNCEA" style="height:56px;width:auto;display:block">
         </span>
       </div>
     </div>
-
-    <div style="max-width:1340px;margin:0 auto;padding:22px 26px 0">
-      <p style="font-size: 12.5px; line-height: 1.65; color: #7E8D85; text-wrap: pretty; height: 100%">Nota técnica: los sensores de bajo costo generan estimaciones e indicadores de monitoreo exploratorio. No sustituyen instrumental regulatorio certificado.</p>
+    <div style="max-width:1340px;margin:0 auto;padding:44px 26px 0">
+      <p style="font-size:12px;line-height:1.6;color:#7E8D85;text-wrap:pretty">Nota t&eacute;cnica: los sensores de bajo costo generan estimaciones e indicadores de monitoreo exploratorio. No sustituyen instrumental regulatorio certificado.</p>
     </div>
-
-    <div style="max-width: 1340px; margin: 26px auto 0; padding: 16px 26px 32px; border-top: 1px solid rgba(233,238,235,.1); font-size: 12px; color: #7E8D85; text-align: center; width: 100%; height: 100%; padding-bottom: 16px">
-      © 2026 ZELENI SVET · Gestión ambiental y territorial
+    <div style="max-width:1340px;margin:0 auto;padding:20px 26px 30px;border-top:1px solid rgba(233,238,235,.1);display:flex;flex-wrap:wrap;gap:8px 26px;align-items:center;justify-content:space-between;font-size:12px;color:#7E8D85">
+      <span>&copy; 2026 ZELENI SVET &middot; Gesti&oacute;n ambiental y territorial</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase">Datos + territorio + tecnolog&iacute;a + ciencia + comunidad</span>
     </div>
   </footer>
 
@@ -1151,7 +1176,10 @@ const CLASSIC_PROJECTS = [
 ];
 
 class Component extends DCLogic {
-  state = {screen:"home", layer:0, sent:false, lead:false, lang:"es", reason:"Diagnóstico Territorial Express"};
+  state = {screen:"home", layer:0, sent:false, lead:false,
+    lang:(typeof localStorage!=="undefined"?(localStorage.getItem("zs-lang")||"es"):"es"),
+    accent:(function(){try{const q=new URLSearchParams(location.search).get("accent");const ls=(typeof localStorage!=="undefined"&&localStorage.getItem("zs-accent"));const v=q?("#"+q):(ls||"#2FB6A8");if(q){try{localStorage.setItem("zs-accent",v);}catch(e){}}return String(v).toLowerCase();}catch(e){return "#2FB6A8";}})(),
+    reason:"Diagnóstico Territorial Express"};
 
   componentDidMount(){
     const self = this;
@@ -1224,7 +1252,7 @@ class Component extends DCLogic {
   renderVals(){
     const self = this;
     const s = this.state.screen;
-    const accent = this.props.accent || "#2FB6A8";
+    const accent = this.state.accent || this.props.accent || "#2FB6A8";
     const li = this.state.layer;
     const layer = GEB[li];
     const iaq = this.props.iaqDemo != null ? this.props.iaqDemo : 50;
@@ -1233,8 +1261,20 @@ class Component extends DCLogic {
     return {
       accent: accent,
       ctaLabel: "Diagnóstico express",
-      setEs: function(e){ e.preventDefault(); self.setState({lang:"es"}); },
-      setEn: function(e){ e.preventDefault(); self.setState({lang:"en"}); },
+      palettes: (function(){
+        const cur = String(accent).toLowerCase();
+        const opts = ["#2FB6A8","#57B487","#7FA9D4","#C9A063"];
+        const names = ["Turquesa","Verde","Azul","Dorado"];
+        return opts.map(function(c,i){
+          return {c:c, name:names[i],
+            border: c===cur ? "#FFFFFF" : "rgba(233,238,235,.25)",
+            pick: function(e){ e.preventDefault(); try{localStorage.setItem("zs-accent",c);}catch(_){}
+              try{history.replaceState(null,"","?accent="+c.slice(1));}catch(_){}
+              self.setState({accent:c}); }};
+        });
+      })(),
+      setEs: function(e){ e.preventDefault(); try{localStorage.setItem("zs-lang","es");}catch(_){} self.setState({lang:"es"}); },
+      setEn: function(e){ e.preventDefault(); try{localStorage.setItem("zs-lang","en");}catch(_){} self.setState({lang:"en"}); },
       esBg: lang === "es" ? "rgba(47,182,168,.22)" : "transparent",
       esBorder: lang === "es" ? accent : "rgba(233,238,235,.2)",
       esOp: lang === "es" ? 1 : .55,
@@ -1251,6 +1291,7 @@ class Component extends DCLogic {
       isCases: s === "cases", isContact: s === "contact",
       goHome: this.nav("home"), goGeb: this.nav("geb"), goTech: this.nav("tech"),
       goStation: this.nav("station"), goServices: this.nav("services"),
+      goTerr: this.nav("terr"), goBio: this.nav("bio"),
       goCases: this.nav("cases"), goContact: this.nav("contact"),
 
       triad: TRIAD,

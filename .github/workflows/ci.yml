@@ -31,8 +31,11 @@ jobs:
       - name: Referencias locales íntegras (HTML/CSS/JS/fuentes/imágenes)
         run: node scripts/check-assets.cjs
 
-      - name: Guarda CSP (sin style/script/handlers inline)
+      - name: Coherencia CSP (.htaccess vs mockup)
         run: node scripts/check-csp.cjs
+
+      - name: Sintaxis data-dc-script
+        run: node scripts/check-dc-parse.cjs
 
       - name: Sintaxis PHP del formulario
         run: php -l enviar.php

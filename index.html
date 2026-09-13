@@ -4,6 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
+<title>Zeleni Svet · Inteligencia territorial para decisiones ambientales</title>
+<meta name="description" content="Zeleni Svet — consultora ambiental y territorial con estación de monitoreo IoT propia, inteligencia territorial, licenciamiento ambiental, monitoreo continuo y programas de apropiación comunitaria. Córdoba, Argentina.">
+<meta name="theme-color" content="#080C0B">
+<link rel="icon" type="image/png" href="assets/img/logo1.png">
+<link rel="apple-touch-icon" href="assets/img/logo1.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Zeleni Svet">
+<meta property="og:title" content="Zeleni Svet · Inteligencia territorial para decisiones ambientales">
+<meta property="og:description" content="Estaciones de monitoreo IoT, inteligencia territorial, licenciamiento ambiental y gestión ambiental continua.">
+<meta property="og:url" content="https://zelenisvet.com.ar/">
+<meta property="og:image" content="https://zelenisvet.com.ar/assets/img/encabezado1.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://zelenisvet.com.ar/">
 </head>
 <body>
 <x-dc>
@@ -221,9 +234,9 @@
           <p style="margin-top:14px;max-width:46ch;font-size:14.5px;line-height:1.6;color:#B4C2BA;text-wrap:pretty">Descargá gratis: los 10 errores críticos que frenan la aprobación de un Estudio de Impacto Ambiental.</p>
         </div>
         <div style="display:flex;flex-direction:column;gap:11px">
-          <input type="text" placeholder="Nombre" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none" style-focus="border-color:#D8B072">
-          <input type="text" placeholder="Empresa u organismo" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none" style-focus="border-color:#D8B072">
-          <input type="email" placeholder="Email de trabajo" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none" style-focus="border-color:#D8B072">
+          <input id="zs-lead-name" type="text" placeholder="Nombre" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none" style-focus="border-color:#D8B072">
+          <input id="zs-lead-org" type="text" placeholder="Empresa u organismo" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none" style-focus="border-color:#D8B072">
+          <input id="zs-lead-email" type="email" placeholder="Email de trabajo" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none" style-focus="border-color:#D8B072">
           <button onClick="{{ getLead }}" style="padding:14px 20px;border:none;border-radius:9px;background:#D8B072;color:#120D04;font-weight:600;font-size:14.5px;cursor:pointer" style-hover="background:#E6C48F">{{ leadLabel }}</button>
         </div>
       </div>
@@ -789,21 +802,21 @@
             </label>
             <label style="display:flex;flex-direction:column;gap:7px">
               <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#7E8D85">Nombre</span>
-              <input type="text" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none" style-focus="border-color:#2FB6A8">
+              <input id="zs-name" type="text" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none" style-focus="border-color:#2FB6A8">
             </label>
             <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px">
               <label style="display:flex;flex-direction:column;gap:7px">
                 <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#7E8D85">Empresa u organismo</span>
-                <input type="text" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none;width:100%" style-focus="border-color:#2FB6A8">
+                <input id="zs-org" type="text" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none;width:100%" style-focus="border-color:#2FB6A8">
               </label>
               <label style="display:flex;flex-direction:column;gap:7px">
                 <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#7E8D85">Email</span>
-                <input type="email" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none;width:100%" style-focus="border-color:#2FB6A8">
+                <input id="zs-email" type="email" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none;width:100%" style-focus="border-color:#2FB6A8">
               </label>
             </div>
             <label style="display:flex;flex-direction:column;gap:7px">
               <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#7E8D85">Etapa del proyecto</span>
-              <select style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none">
+              <select id="zs-stage" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none">
                 <sc-for list="{{ stages }}" as="s" hint-placeholder-count="5">
                   <option style="background:#0D1412">{{ s }}</option>
                 </sc-for>
@@ -811,7 +824,7 @@
             </label>
             <label style="display:flex;flex-direction:column;gap:7px">
               <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#7E8D85">Qué necesitás resolver</span>
-              <textarea rows="4" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none;resize:vertical" style-focus="border-color:#2FB6A8"></textarea>
+              <textarea id="zs-msg" rows="4" style="padding:13px 15px;background:rgba(8,12,11,.6);border:1px solid rgba(233,238,235,.2);border-radius:9px;font-size:14.5px;outline:none;resize:vertical" style-focus="border-color:#2FB6A8"></textarea>
             </label>
             <div style="display:flex;flex-wrap:wrap;gap:9px;align-items:center">
               <button onClick="{{ submit }}" style="flex:1 1 180px;padding:15px 22px;border:none;border-radius:9px;background:{{ accent }};color:#05100E;font-weight:600;font-size:14.5px;cursor:pointer" style-hover="background:#57B487">{{ submitLabel }}</button>
@@ -1337,11 +1350,35 @@ class Component extends DCLogic {
       iaq: iaq,
       iaqPct: Math.max(4, Math.min(100, (iaq / 500) * 100)) + "%",
       leadLabel: this.state.lead ? "Te lo enviamos ✓" : "Descargar checklist",
-      getLead: function(e){ e.preventDefault(); self.setState({lead:true}); },
+      getLead: function(e){ e.preventDefault();
+      var v=function(id){ var el=document.getElementById(id); return el?el.value.trim():""; };
+      var lineas=[
+        "Hola Zeleni Svet. Quiero recibir el checklist \"Los 10 errores críticos que frenan la aprobación de un EsIA\".",
+        "",
+        "Nombre: "+(v("zs-lead-name")||"—"),
+        "Empresa u organismo: "+(v("zs-lead-org")||"—"),
+        "Email de trabajo: "+(v("zs-lead-email")||"—")
+      ];
+      window.open("https://wa.me/5493513001702?text="+encodeURIComponent(lineas.join("\n")), "_blank", "noopener");
+      self.setState({lead:true}); },
       reasons: ["Diagnóstico Territorial Express","Cotización de un servicio","Licenciamiento ambiental / EsIA","Monitoreo y estación Zeleni","Capacitación o Aula Viva","Padrinazgo RSE","Otra consulta"],
       pickReason: function(e){ self.setState({reason:e.target.value}); },
       submitLabel: this.state.sent ? "Consulta enviada ✓" : "Enviar consulta",
-      submit: function(e){ e.preventDefault(); self.setState({sent:true}); }
+      submit: function(e){ e.preventDefault();
+      var v=function(id){ var el=document.getElementById(id); return el?el.value.trim():""; };
+      var lineas=[
+        "Hola Zeleni Svet. Consulta desde el sitio (Diagnóstico Territorial Express).",
+        "",
+        "Nombre: "+(v("zs-name")||"—"),
+        "Empresa u organismo: "+(v("zs-org")||"—"),
+        "Email: "+(v("zs-email")||"—"),
+        "Etapa del proyecto: "+(v("zs-stage")||"—"),
+        "Motivo: "+self.state.reason,
+        "",
+        v("zs-msg")||"—"
+      ];
+      window.open("https://wa.me/5493513001702?text="+encodeURIComponent(lineas.join("\n")), "_blank", "noopener");
+      self.setState({sent:true}); }
     };
   }
 }

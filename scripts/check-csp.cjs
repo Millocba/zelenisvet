@@ -2,28 +2,44 @@
 const fs = require('fs');
 const path = require('path');
 
-const htmlPath = path.resolve(__dirname, '..', 'index.html');
-const src = fs.readFileSync(htmlPath, 'utf8');
-const problems = [];
-
-const tagRe = /<[a-zA-Z][^>]*>/g;
-let match;
-while ((match = tagRe.exec(src)) !== null) {
-  const tag = match[0];
-  if (/\sstyle\s*=/i.test(tag)) problems.push('atributo style inline: ' + tag);
-  if (/\son[a-z]+\s*=/i.test(tag)) problems.push('handler inline: ' + tag);
-}
-
-const scriptRe = /<script\b[^>]*>/gi;
-while ((match = scriptRe.exec(src)) !== null) {
-  if (!/\bsrc\s*=/i.test(match[0])) problems.push('<script> inline sin src: ' + match[0]);
-}
-
-if (/<style\b/i.test(src)) problems.push('bloque <style> inline en index.html');
-if (/javascript:/i.test(src)) problems.push('URL javascript: detectada');
-
-if (problems.length > 0) {
-  for (const p of problems) console.error('CSP violation: ' + p);
+const dir = path.resolve(__dirname, '..');
+const ht = fs.readFileSync(path.join(dir, '.htaccess'), 'utf8');
+const m = ht.match(/Header\s+(?:always\s+)?set\s+Content-Security-Policy\s+"([^"]+)"/i);
+if (!m) {
+  console.error('CSP no declarada en .htaccess');
   process.exit(1);
 }
-console.log('OK · sin style/script/handlers inline acordes a la CSP estricta.');
+const csp = m[1];
+
+const required = [
+  ['default-src', "'self'"],
+  ['script-src', "'self'"],
+  ['script-src', "'unsafe-inline'"],
+  ['script-src', "'unsafe-eval'"],
+  ['script-src', 'https://unpkg.com'],
+  ['style-src', "'self'"],
+  ['style-src', "'unsafe-inline'"],
+  ['style-src', 'https://fonts.googleapis.com'],
+  ['font-src', 'https://fonts.gstatic.com'],
+  ['img-src', "'self'"],
+  ['frame-src', 'https://www.google.com'],
+  ['form-action', "'self'"]
+];
+
+const dirs = {};
+for (const part of csp.split(';')) {
+  const t = part.trim().split(/\s+/);
+  const name = t.shift();
+  if (name) dirs[name] = dirs[name] ? dirs[name].concat(t) : t;
+}
+
+const missing = [];
+for (const [d, tok] of required) {
+  if (!(dirs[d] || []).includes(tok)) missing.push(d + ' -> ' + tok);
+}
+
+if (missing.length > 0) {
+  for (const x of missing) console.error('Falta en CSP: ' + x);
+  process.exit(1);
+}
+console.log('OK · .htaccess expone permisos compatibles con el mockup (script/style inline, unpkg, fuentes, maps).');

@@ -2,3 +2,5 @@
 node_modules/
 *.log
 .env
+CLAUDE.md
+docs/superpowers/

@@ -37,5 +37,8 @@ jobs:
       - name: Sintaxis data-dc-script
         run: node scripts/check-dc-parse.cjs
 
+      - name: Navbar responsive (clases + media query)
+        run: node scripts/check-responsive.cjs
+
       - name: Sintaxis PHP del formulario
         run: php -l enviar.php

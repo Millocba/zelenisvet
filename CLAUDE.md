@@ -27,11 +27,12 @@
 - SPA sin URLs por página (sin SEO por screen). El mapa/dashboard son maquetas (`pointer-events:none`, blips fijos).
 - `showTop`/paleta: `renderVals` expone `showTop: this.state.showTop === true` y `p.pick`; actualizar juntos o el botón "volver arriba" no aparece (bug ya corregido, 2026-09-13).
 - Deploy a Hostinger: método no definido; `.htaccess` relajado listo para el stack mockup. Proxy: NO correr check-csp estricto (descartado).
+- El header no tiene breakpoints responsive salvo un `@media (max-width:700px)` estático en `<head>` (`html,body{overflow-x:clip}`, `.zs-hdr-top{flex-wrap:wrap}`, `.zs-hdr-brandtxt{display:none}`, `.zs-hdr-cta`, `.zs-hdr-navwrap`). Guard: `scripts/check-responsive.cjs`. El nav scrollea horizontal (overflow-x:auto). (2026-09-14)
 
 ## Conventions
 - Git identity local: `git -c user.name="opencode" -c user.email="opencode@local"`. No usar `&&` en PowerShell; encadenar con `; if ($?) { ... }`.
 - NO agregar comentarios al código (salvo .htaccess que ya los tiene). NO usar emojis en código/labels (los "✓" son checks Unicode ya existentes).
-- Verificación: `node scripts/check-assets.cjs`, `node scripts/check-csp.cjs`, `node scripts/check-dc-parse.cjs`, `php -l enviar.php`; luego `gh run list --repo Millocba/zelenisvet --limit 3` para confirmar CI + Pages build.
+- Verificación: `node scripts/check-assets.cjs`, `node scripts/check-csp.cjs`, `node scripts/check-dc-parse.cjs`, `node scripts/check-responsive.cjs`, `php -l enviar.php`; luego `gh run list --repo Millocba/zelenisvet --limit 3` para confirmar CI + Pages build.
 - El agente NO ve la preview; validar por diffs, imágenes y build. El usuario revisa visualmente en la preview antes de producción.
 - Backup pre-mockup: `backup/rediseno-singlefile-v1` (commit `2c7cbf1`). Último deploy: `8eec0ee`.
 
